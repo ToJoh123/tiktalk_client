@@ -1,0 +1,130 @@
+* {
+    background-color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+#headnav {
+    position: sticky;
+    top: 0;
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+    align-items: end;
+    justify-content: end;
+    padding: 10px;
+}
+
+#sidenav {
+    position: sticky;
+    top: 0;
+    flex: 0 0 15%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 40px;
+    gap: 40px;
+    z-index: 1;
+    border: solid;
+    border-color: rgb(53, 53, 53);
+}
+
+#main-content {
+    flex: 1;
+    padding: 40px;
+}
+
+a {
+    position: relative;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+a:hover {
+    color: #25F4EE;
+}
+
+a:hover::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    display: inline-block;
+    width: auto;
+    height: 4px;
+    box-shadow: 0 2px 4px rgb(237, 40, 125);
+}
+
+.post {
+    border: solid;
+    border-radius: 10px;
+    color: rgb(69, 69, 69);
+    background-color: rgb(0, 0, 0);
+    padding: 20px;
+    margin-bottom: 20px;
+    width: 50%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+input[type="text"] {
+    border: solid;
+    border-radius: 10px;
+    color: rgb(69, 69, 69);
+    background-color: rgb(0, 0, 0);
+    padding: 10px;
+    margin-bottom: 20px;
+    resize: none;
+    width: 50%;
+}
+
+.buttons {
+    display: flex;
+    justify-content: start;
+    margin-top: 20px;
+}
+
+button {
+    background-color: #FE2C55;
+    border: none;
+    border-radius: 1px;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    cursor: pointer;
+    width: 10vh;
+    display: flex;
+    margin-right: 10px;
+}
+
+button:hover {
+    background-color: #7a2536;
+}
+
+input[type="text"][name="comment"] {
+    border: solid;
+    border-radius: 10px;
+    color: rgb(69, 69, 69);
+    background-color: rgb(0, 0, 0);
+    padding: 10px;
+    margin-top: 10px;
+    resize: none;
+    width: 50%;
+}
