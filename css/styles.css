@@ -66,7 +66,7 @@ a:hover::after {
     box-shadow: 0 2px 4px rgb(237, 40, 125);
 }
 
-.post {
+.comments {
     border: solid;
     border-radius: 10px;
     color: rgb(69, 69, 69);
