@@ -1,42 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>TikTalk</title>
-    <link rel="stylesheet" href="/css/styles.css">
-    <script src="https://kit.fontawesome.com/6b4b4511bc.js" crossorigin="anonymous"></script>
-</head>
-<body>
-
-<div class="container">
-    <nav id="sidenav">
-        <a href="/home.html"><img src="/img/Untitled-removebg-preview.png" width="80vh"></a>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <script
+      src="https://kit.fontawesome.com/6b4b4511bc.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <link rel="icon" href="../img/favicon.png" />
+    <div class="container">
+      <nav id="sidenav">
+        <a href="/home.html"><img src="../img/logo.png" width="80vh" /></a>
         <a href="/home.html">Home</a>
         <a href="/profile.html">Profile</a>
-    </nav>
+      </nav>
 
-    <div id="main-content">
+      <div id="main-content">
         <nav id="headnav">
-            <a href="/login.html">Login</a>
-            <a href="/register.html">Register</a>
+          <a href="/tiktalk_client/html/login.html">Login</a>
+          <a href="/register.html">Register</a>
         </nav>
         <h1 id="tiktalk">TikTalk</h1>
         <div>
-        <form action="">
-            <input type="text" id="title" name="title" placeholder="What are you thinking about?">
+          <form action="">
+            <input
+              type="text"
+              id="title"
+              name="title"
+              placeholder="What are you thinking about?"
+            />
             <button class="submitBtn" type="submit">Publish</button>
-        </form>
+          </form>
         </div>
         <div class="post">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <div class="buttons">
-                <button class=" fa-regular fa-heart"></button>
-                <button class="fa-regular fa-comment"></button>
-            </div>
-            <input type="text" name="comment" id="comment" placeholder="Write a comment...">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <div class="buttons">
+            <button class="fa-regular fa-heart"></button>
+            <button class="fa-regular fa-comment"></button>
+          </div>
+          <input
+            type="text"
+            name="comment"
+            id="comment"
+            placeholder="Write a comment..."
+          />
         </div>
+      </div>
     </div>
-</div>
-
-</body>
+  </body>
 </html>
