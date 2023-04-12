@@ -1,0 +1,42 @@
+export const commentsData = [
+  {
+    parentId: null,
+    id: 1,
+    name: "John Doe",
+    username: "JohnDoe",
+    comment: "this my first comment from John Doe",
+    createdAt: "2020-01-01:00:00:00",
+  },
+  {
+    parentId: null,
+    id: 2,
+    name: "Jane Doe",
+    username: "JaneDoe",
+    comment: "this my second comment from Jane Doe",
+    createdAt: "2020-01-02:00:00:00",
+  },
+  {
+    parentId: 1,
+    id: 3,
+    name: "Dan Foo Bar",
+    username: "DanFooBar",
+    comment: "Hello jane doe, this is my first comment on your post",
+    createdAt: "2020-01-03:00:00:00",
+  },
+  {
+    parentId: 1,
+    id: 4,
+    name: "Jane Doe",
+    username: "JaneDoe",
+    comment: "Hello Dan Foo Bar, this is my first reply to your comment",
+    createdAt: "2020-01-04:00:00:00",
+  },
+  {
+    parentId: null,
+    id: 5,
+    name: "Dan foo bar",
+    username: "DanFooBar",
+    comment: "Hello yall, this is my first own comment on this site",
+    createdAt: "2020-01-05:00:00:00",
+  },
+];
