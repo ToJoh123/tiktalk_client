@@ -6,6 +6,7 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
     // Send a request to the server-side API for authentication
     fetch("http://localhost:3000/login", { // Update the URL to your server-side endpoint
       method: "POST",
+      credentials: 'include',
       headers: {
         "Content-Type": "application/json",
       },
