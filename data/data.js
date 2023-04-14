@@ -5,7 +5,7 @@ export const commentsData = [
     userId: 1,
     name: "John Doe",
     username: "JohnDoe",
-    comment: "this my first comment from John Doe",
+    text: "this my first comment-body from John Doe",
     createdAt: "2020-01-01:00:00:00",
   },
   {
@@ -14,7 +14,7 @@ export const commentsData = [
     userId: 1,
     name: "Jane Doe",
     username: "JaneDoe",
-    comment: "this my second comment from Jane Doe",
+    text: "this my second comment from Jane Doe",
     createdAt: "2020-01-02:00:00:00",
   },
   {
@@ -23,7 +23,7 @@ export const commentsData = [
     userId: 2,
     name: "Dan Foo Bar",
     username: "DanFooBar",
-    comment: "Hello jane doe, this is my first comment on your post",
+    text: "Hello jane doe, this is my first comment on your post",
     createdAt: "2020-01-03:00:00:00",
   },
   {
@@ -32,7 +32,7 @@ export const commentsData = [
     userId: 1,
     name: "Jane Doe",
     username: "JaneDoe",
-    comment: "Hello Dan Foo Bar, this is my first reply to your comment",
+    text: "Hello Dan Foo Bar, this is my first reply to your comment",
     createdAt: "2020-01-04:00:00:00",
   },
   {
@@ -41,7 +41,7 @@ export const commentsData = [
     userId: 2,
     name: "Dan foo bar",
     username: "DanFooBar",
-    comment: "Hello yall, this is my first own comment on this site",
+    text: "Hello yall, this is my first own comment on this site",
     createdAt: "2020-01-05:00:00:00",
   },
 ];
