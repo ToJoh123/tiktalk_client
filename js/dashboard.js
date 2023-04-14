@@ -53,6 +53,8 @@ function renderComments(comment) {
       id="commentBody-${comment.id}"
       placeholder="Write a comment..."
     />
+    <div class="replyContainer" id="replyContainer-${comment.id}">
+    </div>
 </div>
     `;
 
@@ -65,6 +67,25 @@ function renderComments(comment) {
   }, 0);
 }
 
+function renderReply(comment) {
+  const replyContainer = document.querySelector(
+    `#replyContainer-${comment.parentId}`
+  );
+  const replyHtml = `
+  <div class="comment" id="${comment.id}">
+    <div class="commentProfile">
+      <img src="https://picsum.photos/40/40" alt="pfp" />
+      <h3>${comment.name}</h3>
+    </div>
+    <p>${comment.text}</p>
+    <div class="buttons">
+      <button class="fa-regular fa-heart"></button>
+    </div>
+</div>
+    `;
+  replyContainer.innerHTML += replyHtml;
+}
+
 function addButtonEventListeners(commentId) {
   //create function for reply button
   document
@@ -74,6 +95,9 @@ function addButtonEventListeners(commentId) {
         "this text is submitted by reply button with id:" + commentId
       );
       console.log(getReplies(commentId));
+      getReplies(commentId).forEach((reply) => {
+        renderReply(reply);
+      });
     });
   // TODO: add other buttons below here
 }
