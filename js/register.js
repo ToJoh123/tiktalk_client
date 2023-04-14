@@ -15,7 +15,7 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
         // Handle response from server
         if (response.ok) {
           // Redirect to success page or perform other actions
-          window.location.href = "/html/dashboard.html";
+          window.location.href = "../html/index.html";
         } else {
           // Display error message to user
           alert("Failed to create account.");
