@@ -26,7 +26,7 @@ function openTab(evt, tabName) {
         .then(response => response.text())
         .then(data => {
           console.log(data);
-          window.location.href = "/html/login.html";
+          window.location.href = "../html/login.html";
         })
         .catch(error => {
           console.error(error);

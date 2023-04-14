@@ -16,7 +16,7 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
         // Handle response from server
         if (response.ok) {
           // Redirect to success page or perform other actions
-          window.location.href = "/html/dashboard.html";
+          window.location.href = "../html/dashboard.html";
         } else {
           // Display error message to user
           alert("Failed to log in. Please check your username and password.");
