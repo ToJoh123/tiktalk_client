@@ -2,6 +2,7 @@ export const commentsData = [
   {
     parentId: null,
     id: 1,
+    userId: 1,
     name: "John Doe",
     username: "JohnDoe",
     comment: "this my first comment from John Doe",
@@ -10,6 +11,7 @@ export const commentsData = [
   {
     parentId: null,
     id: 2,
+    userId: 1,
     name: "Jane Doe",
     username: "JaneDoe",
     comment: "this my second comment from Jane Doe",
@@ -18,6 +20,7 @@ export const commentsData = [
   {
     parentId: 1,
     id: 3,
+    userId: 2,
     name: "Dan Foo Bar",
     username: "DanFooBar",
     comment: "Hello jane doe, this is my first comment on your post",
@@ -26,6 +29,7 @@ export const commentsData = [
   {
     parentId: 1,
     id: 4,
+    userId: 1,
     name: "Jane Doe",
     username: "JaneDoe",
     comment: "Hello Dan Foo Bar, this is my first reply to your comment",
@@ -34,6 +38,7 @@ export const commentsData = [
   {
     parentId: null,
     id: 5,
+    userId: 2,
     name: "Dan foo bar",
     username: "DanFooBar",
     comment: "Hello yall, this is my first own comment on this site",
