@@ -1,0 +1,79 @@
+* {
+    background-color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+}
+
+#loginForm {
+    display: flex;
+    flex-direction: column;
+    width: 30vh;
+    justify-content: center;
+    align-items: center;    
+}
+
+#loginDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3vh;
+}
+
+a {
+    text-decoration: none;
+    margin-top: 10vh;
+}
+
+.loginHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+a:hover {
+    color: #25F4EE;
+}
+
+.loginForm input[type="text"],
+.loginForm input[type="password"],
+.loginForm button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #f0f2f5;
+  color:tomato;
+}
+
+.loginForm input[type="text"],
+.loginForm input[type="password"] {
+  border: 1px solid #dddfe2;
+}
+
+.loginForm input[type="text"]:focus,
+.loginForm input[type="password"]:focus {
+  border-color: #1877f2;
+}
+
+.loginForm button[type="submit"] {
+  color: #ffffff;
+  background-color: #FE2C55;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.loginForm button[type="submit"]:hover {
+  background-color: #25F4EE;
+}
+
+.signup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>TikTalk</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/dashboard.css" />
+    <script src="https://kit.fontawesome.com/6b4b4511bc.js" crossorigin="anonymous"></script>
+    <script src="/js/dashboard.js"></script>
+    <!-- <script src="//cdn.ckeditor.com/4.13.0/full/ckeditor.js"></script> -->
+  </head>
+  <link rel="icon" href="../img/favicon.png" />
+  <body>
+    <div class="container">
+      <nav id="sidenav">
+        <a href="/home.html"><img src="../img/logo.png" width="80vh" /></a>
+        <a href="/home.html">Home</a>
+        <a href="/profile.html">Profile</a>
+        <div id="postBtnDiv">
+          <button id="postBtn">Post</button>
+        </div>
+      </nav>
+
+      <div id="for-you" class="tabcontent">
+        <div>
+          <h1><a href="#">TikTalk</a></h1>
+        </div>
+        <div class="tabs">
+          <button class="tablinks active" onclick="openTab(event, 'for-you')">
+            For you
+          </button>
+          <button class="tablinks" onclick="openTab(event, 'following')">
+            Following
+          </button>
+        </div>
+
+        <div>
+          <form action="">
+            <input
+              type="text"
+              id="editor-for-you"
+              name="title"
+              placeholder="What are you thinking about?"
+            />
+            <button class="submitBtn" type="submit">Publish</button>
+          </form>
+        </div>
+        <div class="comment">
+          <div class="commentProfile">
+            <img src="https://picsum.photos/40/40" alt="pfp" />
+            <h3>TEST FOR YOU</h3>
+          </div>
+          <p>TEST FOR YOU</p>
+          <div class="buttons">
+            <button class="fa-regular fa-heart"></button>
+            <button class="fa-regular fa-comment"></button>
+          </div>
+          <input
+            type="text"
+            name="comment"
+            id="comment"
+            placeholder="Write a comment..."
+          />
+        </div>
+      </div>
+      <div id="following" class="tabcontent" style="display: none">
+        <div>
+          <div>
+            <h1><a href="#">TikTalk</a></h1>
+          </div>
+          <div class="tabs">
+            <button class="tablinks active" onclick="openTab(event, 'for-you')">
+              For you
+            </button>
+            <button class="tablinks" onclick="openTab(event, 'following')">
+              Following
+            </button>
+          </div>
+          <form action="">
+            <input
+              type="text"
+              id="editor-following"
+              name="title"
+              placeholder="What are you thinking about?"
+            />
+            <button class="submitBtn" type="submit">Publish</button>
+          </form>
+        </div>
+        <div class="comment">
+          <div class="commentProfile">
+            <img src="https://picsum.photos/40/41" alt="pfp" />
+            <h3>TEST FOLLOWING</h3>
+          </div>
+          <p>TEST FOLLOWING</p>
+          <div class="buttons">
+            <button class="fa-regular fa-heart"></button>
+            <button class="fa-regular fa-comment"></button>
+          </div>
+          <input
+            type="text"
+            name="comment"
+            id="comment"
+            placeholder="Write a comment..."
+          />
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    CKEDITOR.replace( 'editor-following' );
+    CKEDITOR.replace( 'editor-for-you' );
+</script>
+</html>
