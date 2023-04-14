@@ -43,7 +43,9 @@ function renderComments(comment) {
     <p>${comment.text}</p>
     <div class="buttons">
       <button class="fa-regular fa-heart"></button>
-      <button class="fa-regular fa-comment" id="replyBtn-${comment.id}"></button>
+      <button class="fa-regular fa-comment" id="replyBtn-${comment.id}">${
+    getReplies(comment.id).length
+  }</button>
     </div>
     <input
       type="text"
