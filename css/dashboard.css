@@ -157,3 +157,26 @@ input[type="text"][name="comment"] {
   text-align: center;
   justify-content: center;
 }
+
+
+
+.user-menu {
+    text-decoration: none;
+    display: flex;
+    gap: 1.5vh;
+    margin-top: 30vh;
+}
+
+.user-menu a {
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+#tiktak-pfp {
+    border-radius: 20px;
+}
+
+.user-menu-li {
+    list-style-type: none;
+}

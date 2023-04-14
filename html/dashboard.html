@@ -6,9 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/dashboard.css" />
-    <script src="https://kit.fontawesome.com/6b4b4511bc.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/6b4b4511bc.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="/js/dashboard.js"></script>
-    <!-- <script src="//cdn.ckeditor.com/4.13.0/full/ckeditor.js"></script> -->
   </head>
   <link rel="icon" href="../img/favicon.png" />
   <body>
@@ -19,6 +21,21 @@
         <a href="/profile.html">Profile</a>
         <div id="postBtnDiv">
           <button id="postBtn">Post</button>
+        </div>
+
+        <div class="user-menu">
+          <img
+            id="tiktak-pfp"
+            src="https://picsum.photos/41/40"
+            alt="randomized image 40x40px"
+          />
+          <div class="user-menu-li">
+            <li>Jonathan Ljung</li>
+            <li>@jonathanljungp</li>
+          </div>
+
+          <a a href="#" onclick="showLogoutConfirmation()">Logout</a>
+
         </div>
       </nav>
 
@@ -107,8 +124,4 @@
       </div>
     </div>
   </body>
-  <script>
-    CKEDITOR.replace( 'editor-following' );
-    CKEDITOR.replace( 'editor-for-you' );
-</script>
 </html>
