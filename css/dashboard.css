@@ -23,6 +23,10 @@
   width: 20vh;
 }
 
+.hidden{
+  display: none;
+}
+
 #sidenav {
   position: sticky;
   top: 0;
