@@ -1,4 +1,4 @@
-import { commentsData } from "../data/data.js";
+import { commentsData } from "../data/data.js"; //TODO:replace with get request
 
 function openTab(evt, tabName) {
   // Gets all the elements with the class "tabcontent" and hides them
@@ -22,48 +22,50 @@ function openTab(evt, tabName) {
 
 //get the comments from the data
 //TODO: replace with get request
+
 //filter the comments to get the comments with parentId null
 const rootComments = commentsData.filter(
   (comment) => comment.parentId === null
 );
 //get the replies with the parent id
 const getReplies = (commentId) =>
-  commentsData.filter((comment) => comment.parentId === commentId);
+  commentsData.filter((comment) => comment.parentId === commentId); //TODO: we can add sorting so last replies are at the bottom
 
 //get the comments container
 const commentsContainer = document.querySelector("#comments-container");
 // the html  for each comment
 function renderComments(comment) {
   const commentHtml = `
-  <div class="comment" id="${comment.id}">
+  <div class="comment" id="comment-${comment.id}">
     <div class="commentProfile">
       <img src="https://picsum.photos/40/40" alt="pfp" />
       <h3>${comment.name}</h3>
+
     </div>
     <p>${comment.text}</p>
+    
     <div class="buttons">
-      <button class="fa-regular fa-heart"></button>
-      <button class="fa-regular fa-comment" id="replyBtn-${comment.id}">${
-    getReplies(comment.id).length
-  }</button>
+      <button class="fa-regular fa-heart"/>
+      <button class="fa-regular fa-comment" id="replyBtn-${comment.id}">
+      ${getReplies(comment.id).length}
+      </button>
     </div>
-    <input
-      type="text"
-      name="comment"
-      id="commentBody-${comment.id}"
-      placeholder="Write a comment..."
-    />
-    <div class="replyContainer" id="replyContainer-${comment.id}">
-    </div>
+      <input
+        type="text"
+        name="comment"
+        id="commentBody-${comment.id}"
+        placeholder="Write a comment..."
+      /> 
+      <div class="replyContainer hidden" id="replyContainer-${comment.id}"/>  
 </div>
     `;
 
   //append the comment to the comments container
   commentsContainer.innerHTML += commentHtml;
 
-  //call the function to add event listeners to buttons with a delay
+  //delays the execution of the function to wait for the element to be rendered
   setTimeout(() => {
-    addButtonEventListeners(comment.id);
+    toggleRepliesBtn(comment.id);
   }, 0);
 }
 
@@ -72,7 +74,7 @@ function renderReply(comment) {
     `#replyContainer-${comment.parentId}`
   );
   const replyHtml = `
-  <div class="comment" id="${comment.id}">
+  <div class="comment" id="reply-${comment.id}">
     <div class="commentProfile">
       <img src="https://picsum.photos/40/40" alt="pfp" />
       <h3>${comment.name}</h3>
@@ -86,33 +88,27 @@ function renderReply(comment) {
   replyContainer.innerHTML += replyHtml;
 }
 
-function addButtonEventListeners(commentId) {
-  //create function for reply button
+function toggleRepliesBtn(commentId) {
   document
     .querySelector(`#replyBtn-${commentId}`)
     .addEventListener("click", (e) => {
-      console.log(
-        "this text is submitted by reply button with id:" + commentId
-      );
-      console.log(getReplies(commentId));
-      getReplies(commentId).forEach((reply) => {
-        renderReply(reply);
-      });
+      document
+        .querySelector(`#replyContainer-${commentId}`)
+        .classList.toggle("hidden");
     });
-  // TODO: add other buttons below here
 }
 
 //render the comments
 rootComments.forEach((comment) => {
   renderComments(comment);
+
+  //render replies
+  const commentId = comment.id;
+  getReplies(commentId).forEach((reply) => {
+    renderReply(reply);
+  });
 });
 
 //end of render root comments
 
-//render replies to comments on click
-
 console.log(commentsData); //TODO: remove this
-
-document.querySelector(`#static-commentBtn`).addEventListener("click", (e) => {
-  console.log("this is static button");
-});
