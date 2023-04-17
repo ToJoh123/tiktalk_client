@@ -20,7 +20,9 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
           window.location.href = "../html/index.html";
         } else {
           // Display error message to user
-          alert("Failed to create account.");
+          response.json().then(function(data) {
+            alert(data.message);
+          })
         }
       })
       .catch(function(error) {
