@@ -11,7 +11,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.0/dist/js.cookie.min.js"></script>
-    <script src="../js/index.js"></script>
+    <script src="../js/index.js" type="module"></script>
   </head>
   <link rel="icon" href="../img/favicon.png" />
   <body>
@@ -35,8 +35,7 @@
             <li>@jonathanljungp</li>
           </div>
 
-          <a a href="#" onclick="showLogoutConfirmation()">Logout</a>
-
+          <a id="logoutBtn" href="#">Logout</a>
         </div>
       </nav>
 
@@ -45,12 +44,8 @@
           <h1><a href="#">TikTalk</a></h1>
         </div>
         <div class="tabs">
-          <button class="tablinks active" onclick="openTab(event, 'for-you')">
-            For you
-          </button>
-          <button class="tablinks" onclick="openTab(event, 'following')">
-            Following
-          </button>
+          <button id="forYouTab" class="tablinks active">For you</button>
+          <button id="followingTab" class="tablinks">Following</button>
         </div>
 
         <div>
@@ -88,12 +83,8 @@
             <h1><a href="#">TikTalk</a></h1>
           </div>
           <div class="tabs">
-            <button class="tablinks active" onclick="openTab(event, 'for-you')">
-              For you
-            </button>
-            <button class="tablinks" onclick="openTab(event, 'following')">
-              Following
-            </button>
+            <button id="forYouTab2" class="tablinks active">For you</button>
+            <button id="followingTab2" class="tablinks">Following</button>
           </div>
           <form action="">
             <input
