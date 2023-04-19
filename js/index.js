@@ -57,7 +57,7 @@ async function updateUserInfo() {
     }
 
     const data = await response.json();
-    const userInfoElem = document.querySelector(".user-menu-li");
+    const userInfoElem = document.querySelector("#user-menu-li");
     userInfoElem.innerHTML = `<li>${data.fullname}</li><li>@${data.username}</li>`;
   } catch (error) {
     console.error("Error updating user info:", error);
