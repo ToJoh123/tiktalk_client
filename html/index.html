@@ -12,6 +12,7 @@
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.0/dist/js.cookie.min.js"></script>
     <script src="../js/index.js" type="module"></script>
+    
   </head>
   <link rel="icon" href="../img/favicon.png" />
   <body>
@@ -39,7 +40,8 @@
         </div>
       </nav>
 
-      <div id="for-you" class="tabcontent">
+      <!-- main content -->
+      <main id="for-you" class="tabcontent">
         <div>
           <h1><a href="#">TikTalk</a></h1>
         </div>
@@ -48,72 +50,23 @@
           <button id="followingTab" class="tablinks">Following</button>
         </div>
 
-        <div>
-          <form action="">
-            <input
-              type="text"
-              id="editor-for-you"
-              name="title"
-              placeholder="What are you thinking about?"
-            />
-            <button class="submitBtn" type="submit">Publish</button>
-          </form>
-        </div>
-        <div class="comment">
-          <div class="commentProfile">
-            <img src="https://picsum.photos/40/40" alt="pfp" />
-            <h3>TEST FOR YOU</h3>
-          </div>
-          <p>TEST FOR YOU</p>
-          <div class="buttons">
-            <button class="fa-regular fa-heart"></button>
-            <button class="fa-regular fa-comment"></button>
-          </div>
+        <!-- editor -->
+        <form action="">
           <input
             type="text"
-            name="comment"
-            id="comment"
-            placeholder="Write a comment..."
+            id="editor-following"
+            name="title"
+            placeholder="What are you thinking about?"
           />
+          <button class="submitBtn" type="submit">Publish</button>
+        </form>
+
+        <div class="comments-container" id="comments-container-1">
+        <!-- 
+        1. when user presses for you, all comments gets here
+        2. when user presses following, the server sorts out following comments -->
         </div>
-      </div>
-      <div id="following" class="tabcontent" style="display: none">
-        <div>
-          <div>
-            <h1><a href="#">TikTalk</a></h1>
-          </div>
-          <div class="tabs">
-            <button id="forYouTab2" class="tablinks active">For you</button>
-            <button id="followingTab2" class="tablinks">Following</button>
-          </div>
-          <form action="">
-            <input
-              type="text"
-              id="editor-following"
-              name="title"
-              placeholder="What are you thinking about?"
-            />
-            <button class="submitBtn" type="submit">Publish</button>
-          </form>
-        </div>
-        <div class="comment">
-          <div class="commentProfile">
-            <img src="https://picsum.photos/40/41" alt="pfp" />
-            <h3>TEST FOLLOWING</h3>
-          </div>
-          <p>TEST FOLLOWING</p>
-          <div class="buttons">
-            <button class="fa-regular fa-heart"></button>
-            <button class="fa-regular fa-comment"></button>
-          </div>
-          <input
-            type="text"
-            name="comment"
-            id="comment"
-            placeholder="Write a comment..."
-          />
-        </div>
-      </div>
-    </div>
+    </main>
+
   </body>
 </html>
