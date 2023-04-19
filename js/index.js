@@ -53,7 +53,8 @@ async function updateUserInfo() {
     });
 
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+            //Username value is invalid redirect.
+            window.location.href = "../html/login.html";
     }
 
     const data = await response.json();
