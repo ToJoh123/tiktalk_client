@@ -1,37 +1,75 @@
-function openTab(evt, tabName) {
-  // Gets all the elements with the class "tabcontent" and hides them
-  let tabcontent = document.getElementsByClassName("tabcontent");
-  for (let i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
+/**
+ * Varför kan jag inte importera funktionerna från andra filer?
+ * @KANNÅGONFÖRKLARA
+ * @BESVIKEN
+ */
 
-  // Gets all the elements with the class "tablinks" and removes the class "active"
-  let tablinks = document.getElementsByClassName("tablinks");
-  for (let i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-
-  // Shows the chosen tabs content and adds the class "active" on the button
-  document.getElementById(tabName).style.display = "block";
-  evt.currentTarget.className += " active";
-}
-
-function showLogoutConfirmation() {
-  const confirmation = confirm("Are you sure you want to log out?");
-  if (confirmation) {
-    fetch("http://localhost:3000/logout", {
-      method: "POST",
-      credentials: "include",
+function getAllComments() {
+  return fetch("http://localhost:3000/comments", {
+    method: "GET",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      return data.data;
     })
-      .then((response) => response.text())
-      .then((data) => {
-        console.log(data);
-        window.location.href = "../html/login.html";
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    .catch((error) => {
+      console.error(error);
+    });
+}
+function renderComments(comments) {
+  //check if comments are empty
+  if (comments.length === 0) {
+    document.getElementById("comments-container-1").innerHTML =
+      "No comments to show";
+    return;
   }
+  const element = document.getElementById("comments-container-1");
+  console.log(comments);
+  const commentHtml = `
+      <div class="comment">
+        <div class="commentProfile">
+          <img src="https://picsum.photos/40/40" alt="pfp" />
+          <h3>TEST FOR YOU</h3>
+        </div>
+        <p>TEST FOR YOU</p>
+        <div class="buttons">
+          <button class="fa-regular fa-heart"></button>
+          <button class="fa-regular fa-comment"></button>
+        </div>
+        <input
+          type="text"
+          name="comment"
+          id="comment"
+          placeholder="Write a comment..."
+        />
+      </div>
+    `;
+  //this should clear the comments container before adding new comments
+  element.innerHTML = "";
+  comments.forEach((comment) => {
+    element.innerHTML += commentHtml;
+  });
+}
+function getFollowerComments() {
+  return fetch("http://localhost:3000/comments/following", {
+    method: "GET",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      return data.data;
+    })
+    .catch((error) => {
+      console.error(error);
+      return [];
+    });
 }
 
 function checkAuthentication() {
@@ -63,24 +101,41 @@ async function updateUserInfo() {
     console.error("Error updating user info:", error);
   }
 }
+function showLogoutConfirmation() {
+  const confirmation = confirm("Are you sure you want to log out?");
+  if (confirmation) {
+    fetch("http://localhost:3000/logout", {
+      method: "POST",
+      credentials: "include",
+    })
+      .then((response) => response.text())
+      .then((data) => {
+        console.log(data);
+        window.location.href = "../html/login.html";
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   checkAuthentication();
   updateUserInfo();
+  getAllComments().then((data) => renderComments(data));
 
-document
+  document
     .getElementById("forYouTab")
-    .addEventListener("click", (event) => openTab(event, "for-you"));
+    .addEventListener("click", (e) =>
+      getAllComments().then((data) => renderComments(data))
+    );
   document
     .getElementById("followingTab")
-    .addEventListener("click", (event) => openTab(event, "following"));
-  document
-    .getElementById("forYouTab2")
-    .addEventListener("click", (event) => openTab(event, "for-you"));
-  document
-    .getElementById("followingTab2")
-    .addEventListener("click", (event) => openTab(event, "following"));
+    .addEventListener("click", (e) =>
+      getFollowerComments().then((data) => renderComments(data))
+    );
+  document;
   document
     .getElementById("logoutBtn")
     .addEventListener("click", showLogoutConfirmation);
- });
+});
