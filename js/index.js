@@ -41,10 +41,34 @@ function checkAuthentication() {
   }
 }
 
+async function updateUserInfo() {
+  try {
+    const jwt = Cookies.get("jwt");
+    const response = await fetch("http://localhost:3000/api/userinfo", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${jwt}`,
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    const userInfoElem = document.querySelector("#user-menu-li");
+    userInfoElem.innerHTML = `<li>${data.fullname}</li><li>@${data.username}</li>`;
+  } catch (error) {
+    console.error("Error updating user info:", error);
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   checkAuthentication();
+  updateUserInfo();
 
-  document
+document
     .getElementById("forYouTab")
     .addEventListener("click", (event) => openTab(event, "for-you"));
   document
@@ -59,4 +83,4 @@ document.addEventListener("DOMContentLoaded", () => {
   document
     .getElementById("logoutBtn")
     .addEventListener("click", showLogoutConfirmation);
-});
+ });
