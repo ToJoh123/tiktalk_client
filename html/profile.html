@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>TikTalk</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/profile.css" />
+    <script
+      src="https://kit.fontawesome.com/6b4b4511bc.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.0/dist/js.cookie.min.js"></script>
+    <script src="../js/profile.js" type="module"></script>
+  </head>
+  <body>
+    <div class="container">
+      <nav id="sidenav">
+        <a href="/html/index.html"
+          ><img src="../img/logo.png" width="80vh"
+        /></a>
+        <a href="/html/index.html">Home</a>
+        <a href="/html/profile.html">Profile</a>
+        <div id="postBtnDiv">
+          <button id="postBtn">Post</button>
+        </div>
+
+        <div class="user-menu">
+          <img
+            id="tiktalk-pfp"
+            src="../img/pfp.jpg"
+            alt="randomized image 40x40px"
+          />
+          <div class="user-menu-li">
+            <p class="user-fullname"></p>
+            <p class="user-username"></p>
+          </div>
+          <a id="logoutBtn" href="#">Logout</a>
+        </div>
+      </nav>
+      <div class="main-content">
+        <div class="banner">
+          <img src="https://picsum.photos/1500/500" alt="Banner image" />
+        </div>
+        <div class="user-profile">
+          <div class="user-profile-container">
+            <img id="user-profile-pfp" src="../img/pfp.jpg" alt="" />
+            <div id="user-info">
+              <h2 class="user-fullname"></h2>
+              <p class="user-username"></p>
+              <br />
+              <div id="user-follow">
+                <p>1</p>
+                <p class="user-followers">Followers</p>
+                <p>1</p>
+                <p class="user-following">Following</p>
+              </div>
+            </div>
+          </div>
+          <div id="profile-comment">
+            <p>
+              test
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
