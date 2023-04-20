@@ -91,13 +91,21 @@ async function updateUserInfo() {
     });
 
     if (!response.ok) {
-            //Username value is invalid redirect.
-            window.location.href = "../html/login.html";
-    }
+      //Username value is invalid redirect.
+      window.location.href = "../html/login.html";
+}
 
     const data = await response.json();
-    const userInfoElem = document.querySelector("#user-menu-li");
-    userInfoElem.innerHTML = `<li>${data.fullname}</li><li>@${data.username}</li>`;
+    const userFullnameElem = document.querySelectorAll(".user-fullname");
+    const userUsernameElem = document.querySelectorAll(".user-username");
+
+    userFullnameElem.forEach((elem) => {
+      elem.textContent = data.fullname;
+    });
+
+    userUsernameElem.forEach((elem) => {
+      elem.textContent = `@${data.username}`;
+    });
   } catch (error) {
     console.error("Error updating user info:", error);
   }

@@ -1,0 +1,174 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #000000;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+}
+
+a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+a:hover {
+  color: #25f4ee;
+}
+
+button {
+  background-color: #fe2c55;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  padding: 10px 20px;
+  cursor: pointer;
+  width: 10vh;
+  display: flex;
+  margin-right: 10px;
+}
+
+#sidenav {
+  position: sticky;
+  top: 0;
+  flex: 0 0 20%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 40px;
+  gap: 40px;
+  z-index: 1;
+  border: solid;
+  border-color: rgb(53, 53, 53);
+}
+
+#postBtnDiv {
+  display: flex;
+  margin-top: 20vh;
+}
+
+#postBtn {
+  width: 20vh;
+  font-size: 15px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+.user-menu {
+  text-decoration: none;
+  display: flex;
+  gap: 1.5vh;
+  margin-top: 30vh;
+}
+
+.user-menu a {
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+#tiktalk-pfp {
+  border-radius: 20px;
+  height: 45px;
+  width: 45px;
+}
+
+.user-menu-li {
+  list-style-type: none;
+}
+
+.main-content {
+  width: 80%;
+  position: relative;
+}
+
+.banner {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  position: relative;
+  border-bottom: 1px solid #ccc;
+}
+
+.banner img {
+  width: 100%;
+  height: auto;
+  position: absolute;
+}
+
+.user-profile {
+  position: absolute;
+  top: 120px;
+  left: 30px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+}
+
+.user-profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 2px;
+}
+
+#user-profile-pfp {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  margin-bottom: 20px;
+  border: 4px solid white;
+}
+
+.user-username {
+  color: #777;
+}
+
+#user-info:p {
+  font-size: 16px;
+}
+
+#user-follow {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.user-followers {
+  color: #777;
+}
+
+.user-following {
+  color: #777;
+  cursor: pointer;
+}
+
+#profile-comment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20vh;
+}
