@@ -22,6 +22,9 @@
   height: 5vh;
   width: 20vh;
 }
+.hidden {
+  display: none;
+}
 
 #sidenav {
   position: sticky;
@@ -133,6 +136,8 @@ button {
 button:hover {
   background-color: #7a2536;
 }
+
+
 
 input[type="text"][name="comment"] {
   border: solid;
