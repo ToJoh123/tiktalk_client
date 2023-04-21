@@ -1,6 +1,6 @@
-import { getAllComments } from "./index/getAllComments.js";
-import { getFollowerComments } from "./index/getFollowerComments.js";
-import { renderComments } from "./index/renderComments.js";
+import { getAllComments } from "./index/controller/getAllComments.js";
+import { getFollowerComments } from "./index/controller/getFollowerComments.js";
+import { renderComments } from "./index/model/renderComments.js";
 
 function checkAuthentication() {
   const jwt = Cookies.get("jwt");
