@@ -33,7 +33,7 @@ function fetchCounts() {
   console.log('jwtToken:', jwtToken);
 
   //Fetch the endpoint.
-  fetch('http://localhost:3000/comments/count', {
+  fetch('http://localhost:3000/profile/count', {
     headers: {
       'Authorization': `Bearer ${jwtToken}`
     }
