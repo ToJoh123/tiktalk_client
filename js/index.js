@@ -1,6 +1,7 @@
 import { getAllComments } from "./index/controller/getAllComments.js";
 import { getFollowerComments } from "./index/controller/getFollowerComments.js";
 import { renderComments } from "./index/model/renderComments.js";
+import { editCommentPost } from "./index/model/editCommentPost.js";
 
 function checkAuthentication() {
   const jwt = Cookies.get("jwt");
@@ -77,4 +78,8 @@ document.addEventListener("DOMContentLoaded", () => {
   document
     .getElementById("logoutBtn")
     .addEventListener("click", showLogoutConfirmation);
+  document
+    .getElementById("post-comment-form")
+    .addEventListener("submit", editCommentPost);
+  document;
 });
