@@ -17,7 +17,7 @@ export function renderReplies(reply) {
         <h3>${reply.username}</h3>
       </div>
       <p>${reply.text}</p>
-      <div class="buttons id="buttons-${reply.id}">
+      <div class="buttons" id="buttons-${reply._id}">
         <button class="fa-regular fa-heart"></button>
         <button class="fa-regular fa-comment"></button>
       </div>
