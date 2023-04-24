@@ -3,6 +3,7 @@ import { getCurrentUserComments } from "./index/controller/getCurrentUserComment
 import { getFollowerComments } from "./index/controller/getFollowerComments.js";
 import { renderComments } from "./index/model/renderComments.js";
 import { editCommentPost } from "./index/model/editCommentPost.js";
+import { renderButtons } from "./index/model/renderButtons.js";
 
 function checkAuthentication() {
   const jwt = Cookies.get("jwt");
