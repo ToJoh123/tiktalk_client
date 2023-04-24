@@ -1,6 +1,8 @@
 import { getAllComments } from "./index/controller/getAllComments.js";
+import { getCurrentUserComments } from "./index/controller/getCurrentUserComments.js";
 import { getFollowerComments } from "./index/controller/getFollowerComments.js";
 import { renderComments } from "./index/model/renderComments.js";
+import { renderButtons } from "./index/model/renderButtons.js";
 
 function checkAuthentication() {
   const jwt = Cookies.get("jwt");
@@ -62,6 +64,11 @@ document.addEventListener("DOMContentLoaded", () => {
   checkAuthentication();
   updateUserInfo();
   getAllComments().then((data) => renderComments(data));
+
+  //wait for previous line to finish
+  setTimeout(() => {
+    getCurrentUserComments().then((data) => renderButtons(data));
+  }, 1000);
 
   document
     .getElementById("forYouTab")
