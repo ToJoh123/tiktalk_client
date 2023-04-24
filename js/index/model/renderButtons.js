@@ -1,64 +1,60 @@
-export function deleteComment(commentId) {
-  console.log("delete comment", commentId);
-  // fetch(`http://localhost:3000/comments`, {
-  //   method: "DELETE",
-  //   credentials: "include",
-  //   body: JSON.stringify({
-  //     commentId: commentId,
-  //   }),
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  // })
-  //   .then((response) => response.text())
-  //   .then((data) => {
-  //     console.log(data);
-  //     window.location.reload();
-  //   })
-  //   .catch((error) => {
-  //     console.error(error);
-  //   });
-}
+import { deleteComment } from "../controller/deleteComment.js";
+import { editComment } from "../controller/editComment.js";
 
-export function editComment(comment) {
-  console.log("edit comment", comment);
-}
 export function renderButtons(data) {
-  // console.log(data);
   data.forEach((comment) => {
-    // console.log("render buttons", comment);
-    const deleteBtnHtml = `
-      <button class="fa-regular fa-heart" id="delete-btn-${comment._id}">delete</button>
-    `;
-    const editBtnHtml = `
-      <button class="fa-regular fa-heart" id="edit-btn-${comment._id}">edit</button>
-    `;
+    const deleteBtnHtml = generateDeleteButtonHtml(comment._id);
+    const editBtnHtml = generateEditButtonHtml(comment._id);
 
     const buttonsElement = document.getElementById(`buttons-${comment._id}`);
 
-    // check if buttonsElement exists before continuing
     if (buttonsElement) {
-      // insert delete button HTML before the end of the buttons container
-      buttonsElement.insertAdjacentHTML("beforeend", deleteBtnHtml);
-
-      // insert edit button HTML before the end of the buttons container
-      buttonsElement.insertAdjacentHTML("beforeend", editBtnHtml);
-
-      // add event listener to the delete button
-      document
-        .getElementById(`delete-btn-${comment._id}`)
-        .addEventListener("click", (e) => {
-          deleteComment(comment._id);
-        });
-
-      // add event listener to the edit button
-      document
-        .getElementById(`edit-btn-${comment._id}`)
-        .addEventListener("click", (e) => {
-          editComment(comment);
-        });
+      addButtonsToContainer(buttonsElement, deleteBtnHtml, editBtnHtml);
+      attachEventListeners(comment);
     } else {
-      console.warn(`Element with ID 'buttons-${comment._id}' not found`);
+      handleElementNotFound(comment);
     }
   });
+}
+
+function generateDeleteButtonHtml(commentId) {
+  return `
+    <button class="fa-regular fa-heart" id="delete-btn-${commentId}">delete</button>
+  `;
+}
+
+function generateEditButtonHtml(commentId) {
+  return `
+    <button class="fa-regular fa-heart" id="edit-btn-${commentId}">edit</button>
+  `;
+}
+
+function addButtonsToContainer(container, deleteButtonHtml, editButtonHtml) {
+  container.insertAdjacentHTML("beforeend", deleteButtonHtml);
+  container.insertAdjacentHTML("beforeend", editButtonHtml);
+}
+
+function attachEventListeners(comment) {
+  addDeleteButtonEvent(comment._id);
+  addEditButtonEvent(comment);
+}
+
+function addDeleteButtonEvent(commentId) {
+  document
+    .getElementById(`delete-btn-${commentId}`)
+    .addEventListener("click", () => {
+      deleteComment(commentId);
+    });
+}
+
+function addEditButtonEvent(comment) {
+  document
+    .getElementById(`edit-btn-${comment._id}`)
+    .addEventListener("click", () => {
+      editComment(comment);
+    });
+}
+
+function handleElementNotFound(comment) {
+  console.warn(`Element with ID 'buttons-${comment._id}' not found`);
 }
