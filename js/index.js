@@ -64,11 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
   checkAuthentication();
   updateUserInfo();
   getAllComments().then((data) => renderComments(data));
-
-  //wait for previous line to finish
-  setTimeout(() => {
-    getCurrentUserComments().then((data) => renderButtons(data));
-  }, 1000);
+  getCurrentUserComments().then((data) => renderButtons(data));
 
   document
     .getElementById("forYouTab")
