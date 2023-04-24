@@ -23,6 +23,29 @@ function checkAuthentication() {
   }
 }
 
+function fetchCounts() {
+  const userFollowEl = document.querySelector('#user-follow');
+  const followersEl = userFollowEl.querySelector('#follower-count');
+  const followingEl = userFollowEl.querySelector('#following-count');
+
+  //Retrieve JWT token from cookie.
+  const jwtToken = document.cookie.replace(/(?:(?:^|.*;\s*)jwt\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+  console.log('jwtToken:', jwtToken);
+
+  //Fetch the endpoint.
+  fetch('http://localhost:3000/profile/count', {
+    headers: {
+      'Authorization': `Bearer ${jwtToken}`
+    }
+  })
+    .then(response => response.json())
+    .then(data => {
+      followersEl.textContent = data.followers;
+      followingEl.textContent = data.following;
+    })
+    .catch(error => console.log(error));
+}
+
 async function updateUserInfo() {
   try {
     const jwt = Cookies.get("jwt");
@@ -57,6 +80,7 @@ async function updateUserInfo() {
 document.addEventListener("DOMContentLoaded", () => {
   checkAuthentication();
   updateUserInfo();
+  fetchCounts();
 
   document
     .getElementById("logoutBtn")
