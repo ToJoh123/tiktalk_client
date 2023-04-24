@@ -7,7 +7,7 @@ export function renderRootComments(comment, numberOfReplies) {
         <h3>${comment.username}</h3>
       </div>
       <p>${comment.text}</p>
-      <div class="buttons">
+      <div class="buttons" id="buttons-${comment._id}">
         <button class="fa-regular fa-heart"></button>
         <button class="fa-regular fa-comment" id="commentBtn-${comment._id}">${numberOfReplies}</button>
       </div>
