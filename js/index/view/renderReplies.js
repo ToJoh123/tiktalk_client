@@ -16,7 +16,7 @@ export function renderReplies(reply) {
         <img src="https://picsum.photos/40/40" alt="pfp" />
         <h3>${reply.username}</h3>
       </div>
-      <p>${reply.text}</p>
+      <p id="comment-text-${comment._id}">${reply.text}</p>
       <div class="buttons" id="buttons-${reply._id}">
         <button class="fa-regular fa-heart"></button>
         <button class="fa-regular fa-comment"></button>

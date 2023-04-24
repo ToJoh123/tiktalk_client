@@ -6,7 +6,7 @@ export function renderRootComments(comment, numberOfReplies) {
         <img src="https://picsum.photos/40/40" alt="pfp" />
         <h3>${comment.username}</h3>
       </div>
-      <p>${comment.text}</p>
+      <p id="comment-text-${comment._id}">${comment.text}</p>
       <div class="buttons" id="buttons-${comment._id}">
         <button class="fa-regular fa-heart"></button>
         <button class="fa-regular fa-comment" id="replyBtn-${comment._id}">${numberOfReplies}</button>
