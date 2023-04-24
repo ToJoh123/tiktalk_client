@@ -65,7 +65,10 @@ document.addEventListener("DOMContentLoaded", () => {
   checkAuthentication();
   updateUserInfo();
   getAllComments().then((data) => renderComments(data));
-  getCurrentUserComments().then((data) => renderButtons(data));
+  //delay
+  setTimeout(() => {
+    getCurrentUserComments().then((data) => renderButtons(data));
+  }, 1000);
 
   document
     .getElementById("forYouTab")
