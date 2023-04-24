@@ -1,8 +1,11 @@
 // renderComments.js
 import { renderRootComments } from "../view/renderRootComments.js";
 import { renderReplies } from "../view/renderReplies.js";
+import { toggleHiddenReplies } from "../view/toggleHiddenReplies.js";
 
 export function renderComments(comments) {
+  //clear the comments container
+  document.getElementById("comments-container-1").innerHTML = "";
   //check if comments are empty
   if (comments.length === 0) {
     document.getElementById("comments-container-1").innerHTML =
@@ -27,18 +30,15 @@ export function renderComments(comments) {
     return comments.filter((comment) => comment.parentId === commentId).length;
   };
 
-  //render the comments
+  //render the comments,create event listeners for the comment button and render replies
   rootComments.forEach((comment) => {
     renderRootComments(comment, numberOfReplies(comment._id));
 
     //add event listener to the comment button
-    const commentButton = document.getElementById(`commentBtn-${comment._id}`);
-    commentButton.addEventListener("click", () => {
-      const replyContainer = document.getElementById(
-        `reply-container-${comment._id}`
-      );
-      replyContainer.classList.toggle("hidden");
+    requestAnimationFrame(() => {
+      toggleHiddenReplies(comment);
     });
+
     //render replies
     const replies = getReplies(comment._id);
     replies.forEach((reply) => {

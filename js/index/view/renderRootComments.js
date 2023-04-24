@@ -9,7 +9,7 @@ export function renderRootComments(comment, numberOfReplies) {
       <p>${comment.text}</p>
       <div class="buttons">
         <button class="fa-regular fa-heart"></button>
-        <button class="fa-regular fa-comment" id="commentBtn-${comment._id}">${numberOfReplies}</button>
+        <button class="fa-regular fa-comment" id="replyBtn-${comment._id}">${numberOfReplies}</button>
       </div>
       <input
         type="text"
