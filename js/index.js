@@ -2,7 +2,7 @@ import { getAllComments } from "./index/controller/getAllComments.js";
 import { getCurrentUserComments } from "./index/controller/getCurrentUserComments.js";
 import { getFollowerComments } from "./index/controller/getFollowerComments.js";
 import { renderComments } from "./index/model/renderComments.js";
-import { editCommentPost } from "./index/model/editCommentPost.js";
+import { postComment } from "./index/model/postComment.js";
 import { createUserCard, usersToFollow } from "./createUserCard.js";
 import { renderButtons } from "./index/model/renderButtons.js";
 
@@ -13,7 +13,7 @@ function checkAuthentication() {
   }
 }
 
- async function updateUserInfo() {
+async function updateUserInfo() {
   try {
     const jwt = Cookies.get("jwt");
     const response = await fetch("http://localhost:3000/api/userinfo", {
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
     .addEventListener("click", showLogoutConfirmation);
   document
     .getElementById("post-comment-form")
-    .addEventListener("submit", editCommentPost);
+    .addEventListener("submit", postComment);
   document;
 
   // Populate the "Who to follow" list
