@@ -30,7 +30,7 @@ function fetchCounts() {
 
   //Retrieve JWT token from cookie.
   const jwtToken = document.cookie.replace(/(?:(?:^|.*;\s*)jwt\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-  console.log('jwtToken:', jwtToken);
+
 
   //Fetch the endpoint.
   fetch('http://localhost:3000/profile/count', {
