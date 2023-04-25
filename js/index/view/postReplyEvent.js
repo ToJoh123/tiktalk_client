@@ -16,9 +16,7 @@ export function postReplyEvent(comment) {
     const replyText = document.getElementById(
       `post-reply-text-${comment._id}`
     ).value;
-    postReply(replyText, comment._id).then((data) => {
-      getAllComments().then((data) => renderComments(data));
-    });
+    postReply(replyText, comment._id);
   });
 }
 
