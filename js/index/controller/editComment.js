@@ -37,25 +37,41 @@ function cancelEdit(comment) {
   );
   cancelButton.remove();
 }
-function saveComment(comment) {
+
+async function saveComment(comment) {
   const value = document.getElementById(`comment-text-${comment._id}`).value;
-  //this code copies the comment and adds the new text to it
-  const newComment = { ...comment, text: value };
-  console.log("this is the comment", newComment);
-  // const paragrafElement = document.getElementById(
-  //   `comment-text-${comment._id}`
-  // );
-  // const text = paragrafElement.value;
-  // const data = {
-  //   text: text,
-  // };
-  // fetch(`/api/comments/${comment._id}`, {
-  //   method: "PUT",
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  //   body: JSON.stringify(data),
-  // }).then(() => {
-  //   location.reload();
-  // });
+  const res = await patchCommentModule(comment._id, value);
+
+  // Check the status code and reload the page if it's 200
+  if (res && res.status === 200) {
+    location.reload();
+  } else {
+    console.error("Error occurred while saving the comment");
+  }
+}
+
+export async function patchCommentModule(commentId, text) {
+  try {
+    const response = await fetch(`http://localhost:3000/comments`, {
+      method: "PATCH",
+      credentials: "include",
+      body: JSON.stringify({
+        _id: commentId,
+        text: text,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await response.text();
+
+    // Return an object containing the status code and data
+    return {
+      status: response.status,
+      data,
+    };
+  } catch (error) {
+    console.error(error);
+  }
 }
