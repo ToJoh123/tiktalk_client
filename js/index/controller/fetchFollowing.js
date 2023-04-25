@@ -21,7 +21,6 @@ export async function fetchFollowing() {
     }
 
     const following = await response.json();
-    console.log("Following list:", following);
     return following;
   } catch (error) {
     console.error("Error fetching following list:", error);
