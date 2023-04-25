@@ -60,24 +60,11 @@ button {
   border-color: rgb(53, 53, 53);
 }
 
-#postBtnDiv {
-  display: flex;
-  margin-top: 20vh;
-}
-
-#postBtn {
-  width: 20vh;
-  font-size: 15px;
-  display: flex;
-  text-align: center;
-  justify-content: center;
-}
-
 .user-menu {
   text-decoration: none;
   display: flex;
   gap: 1.5vh;
-  margin-top: 30vh;
+  margin-top: 60vh;
 }
 
 .user-menu a {
@@ -163,7 +150,6 @@ button {
 
 .user-following {
   color: #777;
-  cursor: pointer;
 }
 
 #profile-comment {

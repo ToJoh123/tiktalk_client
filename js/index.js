@@ -3,64 +3,11 @@ import { getCurrentUserComments } from "./index/controller/getCurrentUserComment
 import { getFollowerComments } from "./index/controller/getFollowerComments.js";
 import { renderComments } from "./index/model/renderComments.js";
 import { postComment } from "./index/model/postComment.js";
-import { createUserCard, usersToFollow } from "./createUserCard.js";
+import { populateFollowList } from "./index/controller/populateFollowList.js"
 import { renderButtons } from "./index/model/renderButtons.js";
-
-function checkAuthentication() {
-  const jwt = Cookies.get("jwt");
-  if (!jwt) {
-    window.location.href = "../html/login.html";
-  }
-}
-
-async function updateUserInfo() {
-  try {
-    const jwt = Cookies.get("jwt");
-    const response = await fetch("http://localhost:3000/api/userinfo", {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${jwt}`,
-        "Content-Type": "application/json",
-      },
-    });
-
-    if (!response.ok) {
-      //Username value is invalid redirect.
-      window.location.href = "../html/login.html";
-    }
-
-    const data = await response.json();
-    const userFullnameElem = document.querySelectorAll(".user-fullname");
-    const userUsernameElem = document.querySelectorAll(".user-username");
-
-    userFullnameElem.forEach((elem) => {
-      elem.textContent = data.fullname;
-    });
-
-    userUsernameElem.forEach((elem) => {
-      elem.textContent = `@${data.username}`;
-    });
-  } catch (error) {
-    console.error("Error updating user info:", error);
-  }
-}
-function showLogoutConfirmation() {
-  const confirmation = confirm("Are you sure you want to log out?");
-  if (confirmation) {
-    fetch("http://localhost:3000/logout", {
-      method: "POST",
-      credentials: "include",
-    })
-      .then((response) => response.text())
-      .then((data) => {
-        console.log(data);
-        window.location.href = "../html/login.html";
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }
-}
+import { checkAuthentication } from "./index/controller/checkAuthentication.js"
+import { updateUserInfo } from "./index/controller/updateUserInfo.js";
+import { showLogoutConfirmation } from "./index/controller/showLogoutConfirmation.js"
 
 document.addEventListener("DOMContentLoaded", () => {
   checkAuthentication();
@@ -89,10 +36,6 @@ document.addEventListener("DOMContentLoaded", () => {
     .getElementById("post-comment-form")
     .addEventListener("submit", postComment);
   document;
-
-  // Populate the "Who to follow" list
   const followList = document.getElementById("follow-list");
-  usersToFollow.forEach((user) => {
-    followList.appendChild(createUserCard(user));
-  });
+  populateFollowList(followList);
 });

@@ -72,6 +72,10 @@
   cursor: pointer;
 }
 
+.user-card a {
+  background-color: #1a1a1a;
+}
+
 
 .user-card img {
   border-radius: 50%;
@@ -99,7 +103,7 @@
 }
 
 
-.user-card .follow-button {
+.user-card .follow-link {
   background-color: rgb(254, 44, 85);
   padding: 7px 15px;
   font-size: 14px;
@@ -111,7 +115,7 @@
   outline: none;
 }
 
-.follow-button:hover {
+.follow-link:hover {
   background-color: #7a2536;
 }
 
@@ -236,24 +240,11 @@ input[type="text"][name="comment"] {
   width: 50%;
 }
 
-#postBtnDiv {
-  display: flex;
-  margin-top: 20vh;
-}
-
-#postBtn {
-  width: 20vh;
-  font-size: 15px;
-  display: flex;
-  text-align: center;
-  justify-content: center;
-}
-
 .user-menu {
   text-decoration: none;
   display: flex;
   gap: 1.5vh;
-  margin-top: 30vh;
+  margin-top: 60vh;
 }
 
 .user-menu a {
