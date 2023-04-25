@@ -19,7 +19,6 @@ export async function fetchUsers() {
     }
 
     const users = await response.json();
-    console.log(users);
     return users;
   } catch (error) {
     console.error("Error fetching users:", error);
