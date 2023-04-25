@@ -41,6 +41,80 @@
   border-color: rgb(53, 53, 53);
 }
 
+#who-to-follow {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 20%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  gap: 40px;
+  z-index: 1;
+  border: solid;
+  border-color: rgb(53, 53, 53);
+}
+
+#who-to-follow h2 {
+  margin-bottom: 20px;
+}
+
+.user-card {
+  background-color: #1a1a1a;
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  gap: 10px;
+  cursor: pointer;
+}
+
+
+.user-card img {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+.user-card-info {
+  display: flex;
+  flex-direction: column;
+  background-color: #1a1a1a;
+  flex-grow: 1;
+}
+
+.user-card-info h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+  background-color: #1a1a1a;
+}
+
+.user-card-info p {
+  font-size: 14px;
+  color: #777;
+  background-color: #1a1a1a;
+}
+
+
+.user-card .follow-button {
+  background-color: rgb(254, 44, 85);
+  padding: 7px 15px;
+  font-size: 14px;
+  border-radius: 20px;
+  color: white;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+}
+
+.follow-button:hover {
+  background-color: #7a2536;
+}
+
 #for-you {
   flex: 1;
   padding: 40px;
@@ -120,7 +194,7 @@ input[type="text"] {
   border-radius: 18px;
 }
 
-button {
+main button {
   background-color: #fe2c55;
   border: none;
   border-radius: 5px;
@@ -132,6 +206,20 @@ button {
   display: flex;
   margin-right: 10px;
 }
+
+#sidenav button {
+  background-color: #fe2c55;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  padding: 10px 20px;
+  cursor: pointer;
+  width: 10vh;
+  display: flex;
+  margin-right: 10px;
+}
+
 
 button:hover {
   background-color: #7a2536;
@@ -161,29 +249,27 @@ input[type="text"][name="comment"] {
   justify-content: center;
 }
 
-
-
 .user-menu {
-    text-decoration: none;
-    display: flex;
-    gap: 1.5vh;
-    margin-top: 30vh;
+  text-decoration: none;
+  display: flex;
+  gap: 1.5vh;
+  margin-top: 30vh;
 }
 
 .user-menu a {
-    margin-top: 10px;
-    cursor: pointer;
-    font-size: 15px;
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 15px;
 }
 
 #tiktalk-pfp {
-    border-radius: 10vh;
-    height: 45px;
-    width: 45px;
+  border-radius: 10vh;
+  height: 45px;
+  width: 45px;
 }
 
 #user-menu-li {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 .user-username {
