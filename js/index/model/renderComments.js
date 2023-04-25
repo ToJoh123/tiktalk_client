@@ -2,6 +2,7 @@
 import { renderRootComments } from "../view/renderRootComments.js";
 import { renderReplies } from "../view/renderReplies.js";
 import { toggleHiddenReplies } from "../view/toggleHiddenReplies.js";
+import { postReplyEvent } from "../view/postReplyEvent.js";
 
 export function renderComments(comments) {
   //clear the comments container
@@ -38,6 +39,10 @@ export function renderComments(comments) {
     requestAnimationFrame(() => {
       toggleHiddenReplies(comment);
     });
+    //add delay
+    setTimeout(() => {
+      postReplyEvent(comment);
+    }, 2000);
 
     //render replies
     const replies = getReplies(comment._id);
