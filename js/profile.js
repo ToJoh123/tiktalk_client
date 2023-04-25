@@ -35,11 +35,6 @@ function fetchCounts() {
 
   const jwtToken = document.cookie.replace(/(?:(?:^|.*;\s*)jwt\s*\=\s*([^;]*).*$)|^.*$/, "$1");
 
-  const jwtToken = document.cookie.replace(
-    /(?:(?:^|.*;\s*)jwt\s*\=\s*([^;]*).*$)|^.*$/,
-    "$1"
-  );
-
   //Fetch the endpoint.
   fetch("http://localhost:3000/profile/count", {
     headers: {
