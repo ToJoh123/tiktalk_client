@@ -11,12 +11,15 @@ export function renderRootComments(comment, numberOfReplies) {
         <button class="fa-regular fa-heart"></button>
         <button class="fa-regular fa-comment" id="replyBtn-${comment._id}">${numberOfReplies}</button>
       </div>
-      <input
-        type="text"
-        name="comment"
-        id="comment"
-        placeholder="Write a comment..."
-      />
+      <form id="post-reply-form-${comment._id}">
+        <input
+          type="text"
+          name="reply"
+          id="post-reply-text-${comment._id}"
+          placeholder="Write a comment..."
+        />
+        <button type="submit" id="submitFormBtn-${comment._id}">Reply</button>
+      </form>
       <div class="reply-container hidden" id="reply-container-${comment._id}"/>
     </div>
   `;
