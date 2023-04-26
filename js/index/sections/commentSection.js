@@ -1,4 +1,4 @@
-import { rootCommentSection } from "./subsection/rootCommentSection.js";
+import { rootCommentSection } from "./html/rootCommentSection.js";
 const commentContainerElement = document.querySelector("#comments-container-1");
 
 export function commentSection(comments) {
