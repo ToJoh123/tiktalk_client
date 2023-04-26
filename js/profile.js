@@ -1,6 +1,7 @@
 import getCurrentUserComments from "./profile/fetch/getCurrentUserComments.js";
 import { patchCommentModule } from "./profile/fetch/patchCommentModule.js";
 import { updateUserInfo } from "./index/controller/updateUserInfo.js";
+import { checkAuthentication } from "./index/controller/checkAuthentication.js";
 
 function showLogoutConfirmation() {
   const confirmation = confirm("Are you sure you want to log out?");
@@ -20,12 +21,6 @@ function showLogoutConfirmation() {
   }
 }
 
-function checkAuthentication() {
-  const jwt = Cookies.get("jwt");
-  if (!jwt) {
-    window.location.href = "../html/login.html";
-  }
-}
 
 function fetchCounts() {
   const userFollowEl = document.querySelector("#user-follow");
