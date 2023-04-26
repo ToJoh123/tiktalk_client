@@ -1,5 +1,15 @@
+/**
+ * 1. returns an HTML element for a root comment
+ * 2. buttons is conditionally rendered based on whether the user is the author of the comment
+ * 3. the number of replies is passed in as a parameter
+ */
 import { replySection } from "./replySection.js";
-export function rootCommentSection(comment, numberOfReplies, replies) {
+export function rootCommentSection(
+  comment,
+  numberOfReplies,
+  replies,
+  editAbleCommentIds
+) {
   const commentElement = document.createElement("div");
   commentElement.classList.add("comment");
   commentElement.id = `comment-id-${comment._id}`;
@@ -14,6 +24,14 @@ export function rootCommentSection(comment, numberOfReplies, replies) {
         <button class="fa-regular fa-comment" id="replyBtn-${
           comment._id
         }">${numberOfReplies}</button>
+        ${
+          editAbleCommentIds.includes(comment._id)
+            ? `
+        <button class="fa-regular fa-heart" id="edit-btn-${comment._id}">edit</button>
+        <button class="fa-regular fa-heart" id="delete-btn-${comment._id}">delete</button>
+        `
+            : ""
+        }
       </div>
       <form id="post-reply-form-${comment._id}">
         <input type="text" name="reply" id="post-reply-text-${
@@ -23,7 +41,7 @@ export function rootCommentSection(comment, numberOfReplies, replies) {
       </form>
       <div class="reply-container hidden" id="reply-container-${comment._id}">
       ${replies.map((reply) => {
-        const replyHtml = replySection(reply);
+        const replyHtml = replySection(reply, editAbleCommentIds);
         return replyHtml;
       })}
     </div>
