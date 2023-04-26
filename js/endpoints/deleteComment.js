@@ -1,4 +1,4 @@
-export function deleteComment(commentId) {
+export async function deleteComment(commentId) {
   fetch(`http://localhost:3000/comments`, {
     method: "DELETE",
     credentials: "include",

@@ -1,4 +1,4 @@
-export function patchCommentModule(commentId, text) {
+export async function patchCommentModule(commentId, text) {
   try {
     const response = await fetch(`http://localhost:3000/comments`, {
       method: "PATCH",

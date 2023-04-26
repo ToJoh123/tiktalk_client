@@ -1,4 +1,4 @@
-export function postComment(text, commentId) {
+export async function postComment(text, commentId) {
   if (!text) {
     return;
   }

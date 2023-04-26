@@ -1,6 +1,6 @@
 // getCurrentUserComments.js
 
-export function getCurrentUserComments() {
+export async function getCurrentUserComments() {
   return fetch("http://localhost:3000/comments/user", {
     method: "GET",
     credentials: "include",
