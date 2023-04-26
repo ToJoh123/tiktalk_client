@@ -13,16 +13,16 @@ export function replySection(reply, editAbleCommentIds) {
       </div>
       <p id="comment-text-${reply._id}">${reply.text}</p>
       <div class="buttons" id="buttons-${reply._id}">
-        <button class="fa-regular fa-heart likeBtn" id="like-btn-${
-          reply._id
-        }></button>
         ${
           editAbleCommentIds.includes(reply._id)
             ? `
-        <button class="fa-regular fa-heart " id="edit-btn-${reply._id}">editaa</button>
-        <button class="fa-regular fa-heart" id="delete-btn-${reply._id}">delete</button>
+            <button class="fa-regular fa-heart likeBtn" id="like-btn-${reply._id}"></button>
+            <button class="fa-regular fa-heart " id="edit-btn-${reply._id}">edit</button>
+            <button class="fa-regular fa-heart" id="delete-btn-${reply._id}">delete</button>
         `
-            : ""
+            : `
+        <button class="fa-regular fa-heart likeBtn" id="like-btn-${reply._id}"/>
+        `
         } 
       </div>
     </div>
