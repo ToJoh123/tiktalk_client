@@ -107,9 +107,10 @@ button {
 {
   margin-top:2rem;
   background-color:#f8d7da;
-  color:black;
+  color:#842029;
   padding:2rem;
   border-radius:4px;
+  font-weight:bolder;
   text-align:center;
 }
 
