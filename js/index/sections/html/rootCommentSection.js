@@ -19,7 +19,9 @@ export function rootCommentSection(
   const numberOfLikes = comment.likes ? comment.likes.length : 0;
   commentElement.innerHTML = `
       <div class="commentProfile">
-        <img src="https://picsum.photos/40/40" alt="pfp" />
+        <a href="./profile.html?username=${comment.username}">
+          <img src="https://picsum.photos/40/40" alt="pfp" />
+        </a>
         <h3>${comment.username}</h3>
       </div>
       <p id="comment-text-${comment._id}">${comment.text}</p>
