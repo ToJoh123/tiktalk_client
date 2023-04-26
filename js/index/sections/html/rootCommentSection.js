@@ -22,7 +22,9 @@ export function rootCommentSection(
       </div>
       <p id="comment-text-${comment._id}">${comment.text}</p>
       <div class="buttons" id="buttons-${comment._id}">
-        <button class="fa-regular fa-heart"></button>
+        <button class="fa-regular fa-heart likeBtn" id="like-btn-${
+          comment._id
+        }"></button>
         <button class="fa-regular fa-comment toggleReplies" id="replyBtn-${
           comment._id
         }">${numberOfReplies}</button>
