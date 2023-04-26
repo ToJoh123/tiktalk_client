@@ -3,6 +3,7 @@ import { deleteComment } from "../../../endpoints/deleteComment.js";
 import { editComment } from "../events/editComment.js";
 import { getAllComments } from "../../../endpoints/getAllComments.js";
 import { commentSection } from "../../sections/commentSection.js";
+import { likeCommentHandler } from "../../../endpoints/likeCommentHandler.js";
 export function addReplyButtonListeners() {
   const replyButtons = document.querySelectorAll(".toggleReplies");
   replyButtons.forEach((button) => {
@@ -37,11 +38,7 @@ export function addSubmitFormButtonListeners() {
 export function addLikeButtonListeners() {
   const likeBtns = document.querySelectorAll(".likeBtn");
   likeBtns.forEach((button) => {
-    button.addEventListener("click", function () {
-      const commentId = button.id.replace("like-btn-", "");
-      // Handle like button logic here
-      console.log("you have liked comment with id: " + commentId);
-    });
+    button.addEventListener("click", likeCommentHandler);
   });
 }
 
