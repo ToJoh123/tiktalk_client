@@ -22,19 +22,18 @@ export function rootCommentSection(
       </div>
       <p id="comment-text-${comment._id}">${comment.text}</p>
       <div class="buttons" id="buttons-${comment._id}">
-        <button class="fa-regular fa-heart likeBtn" id="like-btn-${
-          comment._id
-        }"></button>
-        <button class="fa-regular fa-comment toggleReplies" id="replyBtn-${
-          comment._id
-        }">${numberOfReplies}</button>
         ${
           editAbleCommentIds.includes(comment._id)
             ? `
+        <button class="fa-regular fa-heart likeBtn" id="like-btn-${comment._id}"></button>    
         <button class="fa-regular fa-heart" id="edit-btn-${comment._id}">edit</button>
         <button class="fa-regular fa-heart edit-" id="delete-btn-${comment._id}">delete</button>
+        <button class="fa-regular fa-comment toggleReplies" id="replyBtn-${comment._id}">${numberOfReplies}</button>
         `
-            : ""
+            : `        
+        <button class="fa-regular fa-heart likeBtn" id="like-btn-${comment._id}"></button>
+        <button class="fa-regular fa-comment toggleReplies" id="replyBtn-${comment._id}">${numberOfReplies}</button>
+         `
         }
       </div>
       <form class="re-form" id="post-reply-form-${comment._id}">
