@@ -1,32 +1,26 @@
-import { getAllComments } from "./index/controller/getAllComments.js";
-import { getCurrentUserComments } from "./index/controller/getCurrentUserComments.js";
-import { getFollowerComments } from "./index/controller/getFollowerComments.js";
-import { renderComments } from "./index/model/renderComments.js";
-import { postComment } from "./index/model/postComment.js";
-import { populateFollowList } from "./index/controller/populateFollowList.js"
-import { renderButtons } from "./index/model/renderButtons.js";
-import { checkAuthentication } from "./index/controller/checkAuthentication.js"
+import { getAllComments } from "./endpoints/getAllComments.js";
+import { getFollowingComments } from "./endpoints/getFollowingComments.js";
+import { postComment } from "./endpoints/postComment.js";
+import { populateFollowList } from "./index/controller/populateFollowList.js";
+import { checkAuthentication } from "./index/controller/checkAuthentication.js";
 import { updateUserInfo } from "./index/controller/updateUserInfo.js";
-import { showLogoutConfirmation } from "./index/controller/showLogoutConfirmation.js"
+import { showLogoutConfirmation } from "./index/controller/showLogoutConfirmation.js";
+import { commentSection } from "./index/sections/commentSection.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   checkAuthentication();
   updateUserInfo();
-  getAllComments().then((data) => renderComments(data));
-  //delay
-  setTimeout(() => {
-    getCurrentUserComments().then((data) => renderButtons(data));
-  }, 1000);
+  getAllComments().then((data) => commentSection(data));
 
   document
     .getElementById("forYouTab")
     .addEventListener("click", (e) =>
-      getAllComments().then((data) => renderComments(data))
+      getAllComments().then((data) => commentSection(data))
     );
   document
     .getElementById("followingTab")
     .addEventListener("click", (e) =>
-      getFollowerComments().then((data) => renderComments(data))
+      getFollowingComments().then((data) => commentSection(data))
     );
   document;
   document
@@ -34,7 +28,16 @@ document.addEventListener("DOMContentLoaded", () => {
     .addEventListener("click", showLogoutConfirmation);
   document
     .getElementById("post-comment-form")
-    .addEventListener("submit", postComment);
+    .addEventListener("submit", function (e) {
+      e.preventDefault();
+      const text = document.getElementById("post-comment-text").value;
+      const commentId = null;
+      postComment(text, commentId).then((data) => {
+        getAllComments().then((data) => commentSection(data));
+      });
+      // clear input
+      document.getElementById("post-comment-text").value = "";
+    });
   document;
   const followList = document.getElementById("follow-list");
   populateFollowList(followList);

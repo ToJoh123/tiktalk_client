@@ -1,7 +1,7 @@
 // getCurrentUserComments.js
 
-export function getCurrentUserComments() {
-  return fetch("http://localhost:3000/comments/user", {
+export async function getFollowingComments() {
+  return fetch("http://localhost:3000/comments/feed", {
     method: "GET",
     credentials: "include",
     headers: {

@@ -1,6 +1,6 @@
 // getAllComments.js
 
-export function getAllComments() {
+export async function getAllComments() {
   return fetch("http://localhost:3000/comments", {
     method: "GET",
     credentials: "include",

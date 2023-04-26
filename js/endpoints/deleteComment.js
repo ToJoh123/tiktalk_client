@@ -1,4 +1,4 @@
-export function deleteComment(commentId) {
+export async function deleteComment(commentId) {
   fetch(`http://localhost:3000/comments`, {
     method: "DELETE",
     credentials: "include",
@@ -9,10 +9,10 @@ export function deleteComment(commentId) {
       "Content-Type": "application/json",
     },
   })
-    .then((response) => response.text())
+    .then((response) => response.json())
     .then((data) => {
       console.log(data);
-      window.location.reload();
+      return data;
     })
     .catch((error) => {
       console.error(error);
