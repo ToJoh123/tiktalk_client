@@ -1,6 +1,6 @@
-import { postComment } from "../../endpoints/postComment.js";
-import { deleteComment } from "../../endpoints/deleteComment.js";
-import { editComment } from "./events/editComment.js";
+import { postComment } from "../../../endpoints/postComment.js";
+import { deleteComment } from "../../../endpoints/deleteComment.js";
+import { editComment } from "../events/editComment.js";
 export function addReplyButtonListeners() {
   const replyButtons = document.querySelectorAll(".toggleReplies");
   replyButtons.forEach((button) => {
