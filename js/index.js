@@ -3,20 +3,21 @@ import { getCurrentUserComments } from "./index/controller/getCurrentUserComment
 import { getFollowerComments } from "./index/controller/getFollowerComments.js";
 import { renderComments } from "./index/model/renderComments.js";
 import { postComment } from "./index/model/postComment.js";
-import { populateFollowList } from "./index/controller/populateFollowList.js"
+import { populateFollowList } from "./index/controller/populateFollowList.js";
 import { renderButtons } from "./index/model/renderButtons.js";
-import { checkAuthentication } from "./index/controller/checkAuthentication.js"
+import { checkAuthentication } from "./index/controller/checkAuthentication.js";
 import { updateUserInfo } from "./index/controller/updateUserInfo.js";
-import { showLogoutConfirmation } from "./index/controller/showLogoutConfirmation.js"
+import { showLogoutConfirmation } from "./index/controller/showLogoutConfirmation.js";
+import { commentSection } from "./index/sections/commentSection.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   checkAuthentication();
   updateUserInfo();
-  getAllComments().then((data) => renderComments(data));
+  getAllComments().then((data) => commentSection(data));
   //delay
-  setTimeout(() => {
-    getCurrentUserComments().then((data) => renderButtons(data));
-  }, 1000);
+  // setTimeout(() => {
+  //   getCurrentUserComments().then((data) => renderButtons(data));
+  // }, 1000);
 
   document
     .getElementById("forYouTab")
