@@ -1,6 +1,6 @@
 import { getAllComments } from "./index/controller/getAllComments.js";
 import { getFollowerComments } from "./index/controller/getFollowerComments.js";
-import { renderComments } from "./index/model/renderComments.js";
+import { getFollowingComments } from "./endpoints/getFollowingComments.js";
 import { postComment } from "./index/model/postComment.js";
 import { populateFollowList } from "./index/controller/populateFollowList.js";
 import { checkAuthentication } from "./index/controller/checkAuthentication.js";
@@ -16,12 +16,12 @@ document.addEventListener("DOMContentLoaded", () => {
   document
     .getElementById("forYouTab")
     .addEventListener("click", (e) =>
-      getAllComments().then((data) => renderComments(data))
+      getAllComments().then((data) => commentSection(data))
     );
   document
     .getElementById("followingTab")
     .addEventListener("click", (e) =>
-      getFollowerComments().then((data) => renderComments(data))
+      getFollowingComments().then((data) => commentSection(data))
     );
   document;
   document
