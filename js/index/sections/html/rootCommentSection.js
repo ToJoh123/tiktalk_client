@@ -12,9 +12,11 @@ export function rootCommentSection(
   replies,
   editAbleCommentIds
 ) {
+  
   const commentElement = document.createElement("div");
   commentElement.classList.add("comment");
   commentElement.id = `comment-id-${comment._id}`;
+  const numberOfLikes = comment.likes ? comment.likes.length : 0;
   commentElement.innerHTML = `
       <div class="commentProfile">
         <img src="https://picsum.photos/40/40" alt="pfp" />
@@ -25,13 +27,13 @@ export function rootCommentSection(
         ${
           editAbleCommentIds.includes(comment._id)
             ? `
-        <button class="fa-regular fa-heart likeBtn" id="like-btn-${comment._id}"></button>    
+        <button class="fa-regular fa-heart likeBtn" data-comment-id="${comment._id}" id="like-btn-${comment._id}">${numberOfLikes}</button>
         <button class="fa-regular fa-heart" id="edit-btn-${comment._id}">edit</button>
         <button class="fa-regular fa-heart edit-" id="delete-btn-${comment._id}">delete</button>
         <button class="fa-regular fa-comment toggleReplies" id="replyBtn-${comment._id}">${numberOfReplies}</button>
         `
             : `        
-        <button class="fa-regular fa-heart likeBtn" id="like-btn-${comment._id}"></button>
+            <button class="fa-regular fa-heart likeBtn" data-comment-id="${comment._id}" id="like-btn-${comment._id}">${numberOfLikes}</button>
         <button class="fa-regular fa-comment toggleReplies" id="replyBtn-${comment._id}">${numberOfReplies}</button>
          `
         }
@@ -50,5 +52,6 @@ export function rootCommentSection(
     </div>
     
     `;
+
   return commentElement;
-}
+};
