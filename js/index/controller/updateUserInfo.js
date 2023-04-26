@@ -1,7 +1,7 @@
 export async function updateUserInfo() {
     try {
       const jwt = Cookies.get("jwt");
-      const response = await fetch("http://localhost:3000/api/userinfo", {
+      const response = await fetch("http://localhost:3000/profile/api/userinfo", {
         method: "GET",
         headers: {
           Authorization: `Bearer ${jwt}`,
