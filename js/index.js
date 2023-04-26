@@ -1,7 +1,6 @@
-import { getAllComments } from "./index/controller/getAllComments.js";
-import { getFollowerComments } from "./index/controller/getFollowerComments.js";
+import { getAllComments } from "./endpoints/getAllComments.js";
 import { getFollowingComments } from "./endpoints/getFollowingComments.js";
-import { postComment } from "./index/model/postComment.js";
+import { postComment } from "./endpoints/postComment.js";
 import { populateFollowList } from "./index/controller/populateFollowList.js";
 import { checkAuthentication } from "./index/controller/checkAuthentication.js";
 import { updateUserInfo } from "./index/controller/updateUserInfo.js";
@@ -29,7 +28,16 @@ document.addEventListener("DOMContentLoaded", () => {
     .addEventListener("click", showLogoutConfirmation);
   document
     .getElementById("post-comment-form")
-    .addEventListener("submit", postComment);
+    .addEventListener("submit", function (e) {
+      e.preventDefault();
+      const text = document.getElementById("post-comment-text").value;
+      const commentId = null;
+      postComment(text, commentId).then((data) => {
+        getAllComments().then((data) => commentSection(data));
+      });
+      // clear input
+      document.getElementById("post-comment-text").value = "";
+    });
   document;
   const followList = document.getElementById("follow-list");
   populateFollowList(followList);
