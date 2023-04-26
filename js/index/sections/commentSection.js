@@ -7,9 +7,11 @@
  */
 import { rootCommentSection } from "./html/rootCommentSection.js";
 import { getCurrentUserComments } from "../../endpoints/getCurrentUserComments.js";
+import { postComment } from "../../endpoints/postComment.js";
 const commentContainerElement = document.querySelector("#comments-container-1");
 
 export function commentSection(comments) {
+  console.log(comments);
   getCurrentUserComments().then((data) => {
     const backEndCurrentUserComments = data;
     const editAbleCommentIds = backEndCurrentUserComments.map(
@@ -36,7 +38,9 @@ export function commentSection(comments) {
       return comments.filter((comment) => comment.parentId === commentId)
         .length;
     };
-
+    const numberOfComments = rootComments.length;
+    let renderedComments = 0;
+    let isContentRendered = false;
     if (comments.length === 0) {
       commentContainerElement.textContent = "No comments yet";
     }
@@ -49,8 +53,52 @@ export function commentSection(comments) {
           getReplies(comment._id),
           editAbleCommentIds
         );
-
         commentContainerElement.appendChild(commentElement);
+        renderedComments++;
+      });
+    }
+
+    if (renderedComments === numberOfComments) {
+      isContentRendered = true;
+    }
+    if (isContentRendered) {
+      // Add event listeners to reply buttons
+      const replyButtons = document.querySelectorAll(".toggleReplies");
+      replyButtons.forEach((button) => {
+        button.addEventListener("click", function () {
+          const commentId = button.id.replace("replyBtn-", "");
+          const replyContainer = document.getElementById(
+            `reply-container-${commentId}`
+          );
+          replyContainer.classList.toggle("hidden");
+        });
+      });
+
+      // Add event listeners to submit form buttons
+      const submitFormButtons = document.querySelectorAll(
+        '[id^="submitFormBtn-"]'
+      );
+      submitFormButtons.forEach((button) => {
+        button.addEventListener("click", function (event) {
+          event.preventDefault();
+          const commentId = button.id.replace("submitFormBtn-", "");
+          const replyText = document.getElementById(
+            `post-reply-text-${commentId}`
+          );
+          // Handle the form submission logic here
+          postComment(replyText.value, commentId);
+          // Clear the form
+          document.getElementById(`post-reply-form-${commentId}`).reset();
+        });
+      });
+      const likeBtns = document.querySelectorAll(".likeBtn");
+      likeBtns.forEach((button) => {
+        button.addEventListener("click", function () {
+          const commentid = button.id.replace("like-btn-", "");
+
+          //handle like button logic here
+          console.log("you have liked comment with id: " + commentid);
+        });
       });
     }
   });
