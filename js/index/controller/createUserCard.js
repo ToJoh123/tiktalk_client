@@ -6,7 +6,7 @@ export function createUserCard(user) {
 
   // Add profile picture
   const profileLink = document.createElement("a"); // Create the link element
-  profileLink.href = `./profile.html?id=${user.username}`; // Set the link URL
+  profileLink.href = `./profile.html?username=${user.username}`; // Set the link URL
   li.appendChild(profileLink); // Add the link to the card
 
   const imageUrl = `https://robohash.org/${user.username}?set=set4`;

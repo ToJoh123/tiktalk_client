@@ -102,6 +102,18 @@ button {
   position: absolute;
 }
 
+
+.profile-error
+{
+  margin-top:2rem;
+  background-color:#f8d7da;
+  color:#842029;
+  padding:2rem;
+  border-radius:4px;
+  font-weight:bolder;
+  text-align:center;
+}
+
 .user-profile {
   position: absolute;
   top: 120px;
