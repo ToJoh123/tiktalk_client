@@ -7,11 +7,13 @@
  */
 import { rootCommentSection } from "./html/rootCommentSection.js";
 import { getCurrentUserComments } from "../../endpoints/getCurrentUserComments.js";
+import { getAllComments } from "../../endpoints/getAllComments.js";
 import { postComment } from "../../endpoints/postComment.js";
+import { deleteComment } from "../../endpoints/deleteComment.js";
+import { editComment } from "./events/editComment.js";
 const commentContainerElement = document.querySelector("#comments-container-1");
 
 export function commentSection(comments) {
-  console.log(comments);
   getCurrentUserComments().then((data) => {
     const backEndCurrentUserComments = data;
     const editAbleCommentIds = backEndCurrentUserComments.map(
@@ -91,6 +93,8 @@ export function commentSection(comments) {
           document.getElementById(`post-reply-form-${commentId}`).reset();
         });
       });
+
+      // Add event listeners to like buttons
       const likeBtns = document.querySelectorAll(".likeBtn");
       likeBtns.forEach((button) => {
         button.addEventListener("click", function () {
@@ -98,6 +102,36 @@ export function commentSection(comments) {
 
           //handle like button logic here
           console.log("you have liked comment with id: " + commentid);
+        });
+      });
+
+      //add event listeners to delete buttons
+      const deleteBtns = document.querySelectorAll('[id^="delete-btn-"]');
+      deleteBtns.forEach((button) => {
+        button.addEventListener("click", function () {
+          const commentId = button.id.replace("delete-btn-", "");
+          //handle delete button logic here
+          deleteComment(commentId)
+            .then((data) => {
+              console.log(data);
+              window.location.reload();
+            })
+            .catch((error) => {
+              console.error(error);
+            });
+        });
+      });
+
+      //add event listeners to edit buttons
+      const editBtns = document.querySelectorAll('[id^="edit-btn-"]');
+      editBtns.forEach((button) => {
+        button.addEventListener("click", function () {
+          const commentId = button.id.replace("edit-btn-", "");
+          //handle edit button logic here
+          console.log(
+            "you have clicked the edit button for comment: " + commentId
+          );
+          editComment(commentId);
         });
       });
     }
