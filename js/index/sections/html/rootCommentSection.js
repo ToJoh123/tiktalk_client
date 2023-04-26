@@ -4,6 +4,8 @@
  * 3. the number of replies is passed in as a parameter
  */
 import { replySection } from "./replySection.js";
+
+//event listener for reply button
 export function rootCommentSection(
   comment,
   numberOfReplies,
@@ -21,19 +23,19 @@ export function rootCommentSection(
       <p id="comment-text-${comment._id}">${comment.text}</p>
       <div class="buttons" id="buttons-${comment._id}">
         <button class="fa-regular fa-heart"></button>
-        <button class="fa-regular fa-comment" id="replyBtn-${
+        <button class="fa-regular fa-comment toggleReplies" id="replyBtn-${
           comment._id
         }">${numberOfReplies}</button>
         ${
           editAbleCommentIds.includes(comment._id)
             ? `
         <button class="fa-regular fa-heart" id="edit-btn-${comment._id}">edit</button>
-        <button class="fa-regular fa-heart" id="delete-btn-${comment._id}">delete</button>
+        <button class="fa-regular fa-heart edit-" id="delete-btn-${comment._id}">delete</button>
         `
             : ""
         }
       </div>
-      <form id="post-reply-form-${comment._id}">
+      <form class="re-form" id="post-reply-form-${comment._id}">
         <input type="text" name="reply" id="post-reply-text-${
           comment._id
         }" placeholder="Write a comment...">
