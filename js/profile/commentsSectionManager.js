@@ -12,7 +12,6 @@ export async function commentSectionManager() {
 
   const commentSectionElement = document.querySelector("#comment-section");
   if (!profileName) {
-    console.log("view the page as a logged in user");
     getCurrentUserComments()
       .then((data) => {
         const backEndCurrentUserComments = data;
@@ -38,7 +37,6 @@ export async function commentSectionManager() {
       .catch((error) => console.log(error));
   }
   if (profileName) {
-    console.log("view the page as visitor");
     let renderCount = 0;
     let isRendering = false;
     getThisUserComments(profileName)
