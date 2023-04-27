@@ -10,10 +10,12 @@ function convertToTextArea(commentId) {
   textToEdit.outerHTML = `<textarea id="comment-text-${commentId}">${textToEdit.outerText}</textarea>`;
 }
 function addSaveButton(commentId) {
-  //check if there is already a save button
+  /**
+   * @saveButton - check if there is already a save button
+   */
   const saveButton = document.getElementById(`save-edit-button-${commentId}`);
-
   if (!saveButton) {
+    //check if there is already a save button
     const buttonsContainer = document.getElementById(`buttons-${commentId}`);
     if (buttonsContainer) {
       const buttonHTML = `  <button id="save-edit-button-${commentId}" >Save</button>
@@ -22,7 +24,7 @@ function addSaveButton(commentId) {
       const newSaveButton = document.getElementById(
         `save-edit-button-${commentId}`
       );
-      newSaveButton.addEventListener("click", () => savecommentId(commentId));
+      newSaveButton.addEventListener("click", () => saveCommentId(commentId));
       const cancelEditButton = document.getElementById(
         `cancel-edit-button-${commentId}`
       );
@@ -42,7 +44,7 @@ function cancelEdit(commentId) {
   cancelButton.remove();
 }
 
-async function savecommentId(commentId) {
+async function saveCommentId(commentId) {
   const value = document.getElementById(`comment-text-${commentId}`).value;
   const res = await patchCommentModule(commentId, value);
 

@@ -1,5 +1,5 @@
 export async function deleteComment(commentId) {
-  fetch(`http://localhost:3000/comments`, {
+  return fetch(`http://localhost:3000/comments`, {
     method: "DELETE",
     credentials: "include",
     body: JSON.stringify({
@@ -9,10 +9,11 @@ export async function deleteComment(commentId) {
       "Content-Type": "application/json",
     },
   })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-      return data;
+    .then((response) => {
+      const statusCode = response.status;
+      return response.json().then((data) => {
+        return { status: statusCode, data };
+      });
     })
     .catch((error) => {
       console.error(error);

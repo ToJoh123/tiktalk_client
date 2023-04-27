@@ -2,7 +2,7 @@ export async function postComment(text, commentId) {
   if (!text) {
     return;
   }
-  fetch("http://localhost:3000/comments", {
+  return fetch("http://localhost:3000/comments", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -13,11 +13,11 @@ export async function postComment(text, commentId) {
     }),
     credentials: "include",
   })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-      return data;
-      // getAllComments().then((data) => renderComments(data));
+    .then((response) => {
+      const statusCode = response.status;
+      return response.json().then((data) => {
+        return { status: statusCode, data };
+      });
     })
     .catch((error) => {
       console.error(error);

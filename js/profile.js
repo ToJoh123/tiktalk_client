@@ -1,7 +1,7 @@
-import getCurrentUserComments from "./profile/fetch/getCurrentUserComments.js";
 import { patchCommentModule } from "./profile/fetch/patchCommentModule.js";
 import { updateUserInfo } from "./index/controller/updateUserInfo.js";
 import { checkAuthentication } from "./index/controller/checkAuthentication.js";
+import { commentSectionManager } from "./profile/commentsSectionManager.js";
 
 function showLogoutConfirmation() {
   const confirmation = confirm("Are you sure you want to log out?");
@@ -21,7 +21,6 @@ function showLogoutConfirmation() {
   }
 }
 
-
 function fetchCounts() {
   const userFollowEl = document.querySelector("#user-follow");
   const followersEl = userFollowEl.querySelector("#follower-count");
@@ -30,7 +29,10 @@ function fetchCounts() {
   const profileName = urlParams.get("username");
 
   //Retrieve JWT token from cookie.
-  const jwtToken = document.cookie.replace(/(?:(?:^|.*;\s*)jwt\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+  const jwtToken = document.cookie.replace(
+    /(?:(?:^|.*;\s*)jwt\s*\=\s*([^;]*).*$)|^.*$/,
+    "$1"
+  );
 
   //Fetch the correct endpoint depending on user visits a profile or go to their own profile.
   let endpoint = "http://localhost:3000/profile/count";
@@ -55,7 +57,7 @@ async function profileInfo() {
     const jwt = Cookies.get("jwt");
     const urlParams = new URLSearchParams(window.location.search);
     const profileName = urlParams.get("username");
-    let endpoint = "http://localhost:3000/profile/globalProfile";
+    let endpoint = "http://localhost:3000/profile/globalProfile"; // vad betyder globalProfile?
     if (profileName) {
       endpoint += `?username=${profileName}`;
     }
@@ -75,69 +77,50 @@ async function profileInfo() {
         //Display error message if the res status = 400.
         const errorMessageElem = document.querySelectorAll(".profile-error");
         errorMessageElem.forEach((elem) => {
-        elem.textContent = error;
-        elem.style.display = "block";
-    });
+          elem.textContent = error;
+          elem.style.display = "block";
+        });
       } else {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-    }
-
-    else {
+    } else {
       //Hide the error message if the response status is not 400.
       const errorMessageElem = document.querySelectorAll(".profile-error");
       errorMessageElem.forEach((elem) => {
         elem.style.display = "none";
       });
 
-    const data = await response.json();
-    const userFullnameElem = document.querySelectorAll(".profile-fullname");
-    const userUsernameElem = document.querySelectorAll(".profile-username");
-    const fullName = `${data.data[0].firstname} ${data.data[0].surname}`;
-    const profileUser = `@${data.data[0].username}`;
+      const data = await response.json();
+      const userFullnameElem = document.querySelectorAll(".profile-fullname");
+      const userUsernameElem = document.querySelectorAll(".profile-username");
+      const fullName = `${data.data[0].firstname} ${data.data[0].surname}`;
+      const profileUser = `@${data.data[0].username}`;
 
-    userFullnameElem.forEach((elem) => {
-      elem.textContent = fullName;
-    });
+      userFullnameElem.forEach((elem) => {
+        elem.textContent = fullName;
+      });
 
-    userUsernameElem.forEach((elem) => {
-      elem.textContent = profileUser;
-    });
-  }
+      userUsernameElem.forEach((elem) => {
+        elem.textContent = profileUser;
+      });
+    }
   } catch (error) {
     console.error("Error updating user info:", error);
   }
 }
 
+// function comments(data) {
+//   const commentSectionElement = document.getElementById("comment-section");
 
-async function profileComments() {
-  getCurrentUserComments().then((data) => comments(data));
-}
+//   data.forEach((comment) => {
+//     commentSectionElement.innerHTML += createCommentElement(comment);
+//     //add delay to allow DOM to update before adding event listener
+//     setTimeout(() => {
+//       addEventListener(comment);
+//     }, 0);
+//   });
+// }
 
-function comments(data) {
-  const commentSectionElement = document.getElementById("comment-section");
-
-  data.forEach((comment) => {
-    commentSectionElement.innerHTML += createCommentElement(comment);
-    //add delay to allow DOM to update before adding event listener
-    setTimeout(() => {
-      addEventListener(comment);
-    }, 0);
-  });
-}
-
-function createCommentElement(comment) {
-  return `
-    <div class="comment" id="comment-id-${comment._id}">
-      <p id="status-${comment._id}"></p>
-      <form id="edit-form-${comment._id}">
-        <input type="text" value="${comment.text}" id="edit-comment-${comment._id}" />
-        <button type="submit" id="edit-comment-btn-${comment._id}">Edit</button>
-      </form>
-      <p>posted: ${comment.createdAt}</p>
-    </div>
-  `;
-}
 function addEventListener(comment) {
   //add event listener to form to edit comment
   const editForm = document.getElementById(`edit-form-${comment._id}`);
@@ -162,7 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
   profileInfo();
   updateUserInfo();
   fetchCounts();
-  profileComments();
+  commentSectionManager(); //this renders the comments of logged in user
 
   document
     .getElementById("logoutBtn")
