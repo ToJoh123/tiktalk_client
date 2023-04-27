@@ -19,58 +19,63 @@ import {
 const commentContainerElement = document.querySelector("#comments-container-1");
 
 export function commentSection(comments) {
-  const backEndCurrentUserComments = comments;
-  const editAbleCommentIds = backEndCurrentUserComments.map(
-    (comment) => comment._id
-  );
-  const rootComments = comments
-    .filter((comment) => comment.parentId === null)
-    .sort((a, b) => {
-      return new Date(b.createdAt) - new Date(a.createdAt);
-    });
-  const getReplies = (commentId) => {
-    //get replies for a comment
-    return (
-      comments
-        .filter((comment) => comment.parentId === commentId)
-        //sort replies by date --> latest first
+  getCurrentUserComments()
+    .then((data) => {
+      const backEndCurrentUserComments = data;
+      const editAbleCommentIds = backEndCurrentUserComments.map(
+        (comment) => comment._id
+      );
+      const rootComments = comments
+        .filter((comment) => comment.parentId === null)
         .sort((a, b) => {
           return new Date(b.createdAt) - new Date(a.createdAt);
-        })
-    );
-  };
-  const numberOfReplies = (commentId) => {
-    //get number of replies for a comment
-    return comments.filter((comment) => comment.parentId === commentId).length;
-  };
-  const numberOfComments = rootComments.length;
-  let renderedComments = 0;
-  let isContentRendered = false;
-  if (comments.length === 0) {
-    commentContainerElement.textContent = "No comments yet";
-  }
-  if (comments.length > 0) {
-    commentContainerElement.innerHTML = "";
-    rootComments.map((comment) => {
-      const commentElement = rootCommentSection(
-        comment,
-        numberOfReplies(comment._id),
-        getReplies(comment._id),
-        editAbleCommentIds
-      );
-      commentContainerElement.appendChild(commentElement);
-      renderedComments++;
-    });
-  }
+        });
+      const getReplies = (commentId) => {
+        //get replies for a comment
+        return (
+          comments
+            .filter((comment) => comment.parentId === commentId)
+            //sort replies by date --> latest first
+            .sort((a, b) => {
+              return new Date(b.createdAt) - new Date(a.createdAt);
+            })
+        );
+      };
+      const numberOfReplies = (commentId) => {
+        //get number of replies for a comment
+        return comments.filter((comment) => comment.parentId === commentId)
+          .length;
+      };
+      const numberOfComments = rootComments.length;
+      let renderedComments = 0;
+      let isContentRendered = false;
+      if (comments.length === 0) {
+        commentContainerElement.textContent = "No comments yet";
+      }
+      if (comments.length > 0) {
+        commentContainerElement.innerHTML = "";
+        rootComments.map((comment) => {
+          const commentElement = rootCommentSection(
+            comment,
+            numberOfReplies(comment._id),
+            getReplies(comment._id),
+            editAbleCommentIds
+          );
+          commentContainerElement.appendChild(commentElement);
+          renderedComments++;
+        });
+      }
 
-  if (renderedComments === numberOfComments) {
-    isContentRendered = true;
-  }
-  if (isContentRendered) {
-    addReplyButtonListeners();
-    addSubmitFormButtonListeners();
-    addLikeButtonListeners();
-    addDeleteButtonListeners();
-    addEditButtonListeners();
-  } //end of events
+      if (renderedComments === numberOfComments) {
+        isContentRendered = true;
+      }
+      if (isContentRendered) {
+        addReplyButtonListeners();
+        addSubmitFormButtonListeners();
+        addLikeButtonListeners();
+        addDeleteButtonListeners();
+        addEditButtonListeners();
+      } //end of events
+    })
+    .catch((error) => console.log(error));
 }

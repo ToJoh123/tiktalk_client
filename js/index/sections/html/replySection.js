@@ -21,7 +21,7 @@ export function replySection(reply, editAbleCommentIds) {
             <button class="fa-solid fa-trash" id="delete-btn-${reply._id}"></button>
         `
             : `
-        <button class="fa-regular fa-heart likeBtn" id="like-btn-${reply._id}"/>
+        <button class="fa-regular fa-heart likeBtn" id="like-btn-${reply._id}" data-comment-id="${reply._id}"/>
         `
         } 
       </div>
