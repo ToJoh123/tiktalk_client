@@ -14,47 +14,60 @@ https://github.com/ToJoh123/tiktalk_server.git
 
 First, clone both the frontend and backend repositories:
 
-```bash
+```
 git clone https://github.com/ToJoh123/tiktalk_client.git
 git clone https://github.com/ToJoh123/tiktalk_server.git
+```
 
-2. Install Dependencies
+### 2. Install Dependencies
 
 Navigate to both tiktalk_client and tiktalk_server directories and install the required dependencies:
 
-# For frontend
+For frontend
+
+```
 cd tiktalk_client
 npm install
+```
 
-# For backend
+For backend
+
+```
 cd tiktalk_server
 npm install
+```
 
-3. Run the Backend Server
+### 3. Run the Backend Server
 
 Head over to the tiktalk_server directory and start the server:
 
+```
 cd tiktalk_server
 npm start
+```
 
-4. Run the Frontend Client
+### 4. Run the Frontend Client
 
 Open another terminal window and navigate to the tiktalk_client directory. Start the client:
+
+```
 cd tiktalk_client
 npm start
+```
 
 The TikTalk webapp will now be accessible at http://localhost:5050. Open your favorite browser and join the party! 🥳
-📚 Usage
-Register & Login
+
+# 📚 Usage
+
+# Register & Login
 
     Register for a new account or log in with your existing credentials.
     Once logged in, you'll be greeted by your own personalized TikTalk feed!
 
-Posting, Replying & Liking
+## Posting, Replying & Liking
 
     Post your thoughts and updates using the "Create Post" button.
     Reply to comments by clicking the "Reply" button under a post.
     Show your appreciation by liking posts and comments with the "Like" button.
 
-Following Friends
-```
+## Following Friends
