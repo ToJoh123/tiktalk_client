@@ -17,8 +17,8 @@ export function replySection(reply, editAbleCommentIds) {
           editAbleCommentIds.includes(reply._id)
             ? `
             <button class="fa-regular fa-heart likeBtn" id="like-btn-${reply._id}"></button>
-            <button class="fa-regular fa-heart " id="edit-btn-${reply._id}">edit</button>
-            <button class="fa-regular fa-heart" id="delete-btn-${reply._id}">delete</button>
+            <button class="fa-regular fa-pen-to-square" id="edit-btn-${reply._id}"></button>
+            <button class="fa-solid fa-trash" id="delete-btn-${reply._id}"></button>
         `
             : `
         <button class="fa-regular fa-heart likeBtn" id="like-btn-${reply._id}"/>
