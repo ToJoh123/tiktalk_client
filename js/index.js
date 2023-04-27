@@ -4,7 +4,7 @@ import { postComment } from "./endpoints/postComment.js";
 import { populateFollowList } from "./index/controller/populateFollowList.js";
 import { checkAuthentication } from "./index/controller/checkAuthentication.js";
 import { updateUserInfo } from "./index/controller/updateUserInfo.js";
-import { showLogoutConfirmation } from "./index/controller/showLogoutConfirmation.js";
+import { showLogoutConfirmation } from "./endpoints/showLogoutConfirmation.js";
 import { commentSection } from "./index/sections/commentSection.js";
 
 document.addEventListener("DOMContentLoaded", () => {
