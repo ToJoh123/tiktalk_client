@@ -1,12 +1,12 @@
 document.getElementById("loginForm").addEventListener("submit", function(event) {
-    event.preventDefault(); // prevent form submission
+    event.preventDefault(); 
     const firstname = document.getElementById("firstname").value;
     const surname = document.getElementById("surname").value;
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
 
-    // Send a request to the server-side API for authentication
-    fetch("http://localhost:3000/register", { // Update the URL to your server-side endpoint
+    //Send a request to the server-side endpoint.
+    fetch("http://localhost:3000/register", { 
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -14,19 +14,17 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
       body: JSON.stringify({ firstname: firstname, surname: surname, username: username, password: password }),
     })
       .then(function(response) {
-        // Handle response from server
         if (response.ok) {
-          // Redirect to success page or perform other actions
-          window.location.href = "../html/index.html";
+          //Redirect to login.
+          window.location.href = "../html/login.html";
         } else {
-          // Display error message to user
+          //Display error message to user.
           response.json().then(function(data) {
             alert(data.message);
           })
         }
       })
       .catch(function(error) {
-        // Handle error
         console.error("Error:", error);
       });
   });
