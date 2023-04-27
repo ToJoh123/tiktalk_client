@@ -25,10 +25,17 @@ export function addSubmitFormButtonListeners() {
       const commentId = button.id.replace("submitFormBtn-", "");
       const replyText = document.getElementById(`post-reply-text-${commentId}`);
       // Handle the form submission logic here
-      postComment(replyText.value, commentId).then((data) => {
-        console.log(data);
-        getAllComments().then((data) => commentSection(data));
+      postComment(replyText.value, commentId).then((result) => {
+        const { status, data } = result; // Destructure status and data from the result object
+
+        if (status === 200) {
+          getAllComments().then((data) => commentSection(data));
+        }
+        if (status === 400) {
+          console.log("reply not posted");
+        }
       });
+
       // Clear the form
       document.getElementById(`post-reply-form-${commentId}`).reset();
     });
@@ -36,7 +43,7 @@ export function addSubmitFormButtonListeners() {
 }
 
 export function addLikeButtonListeners() {
-  const likeBtns = document.querySelectorAll(".likeBtn");
+  const likeBtns = [...document.querySelectorAll("button.likeBtn")];
   likeBtns.forEach((button) => {
     button.addEventListener("click", likeCommentHandler);
   });
@@ -48,14 +55,14 @@ export function addDeleteButtonListeners() {
     button.addEventListener("click", function () {
       const commentId = button.id.replace("delete-btn-", "");
       // Handle delete button logic here
-      deleteComment(commentId)
-        .then((data) => {
-          console.log(data);
+      deleteComment(commentId).then(({ status, data }) => {
+        if (status === 200) {
           getAllComments().then((data) => commentSection(data));
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+        }
+        if (status === 400) {
+          console.log("comment not deleted");
+        }
+      });
     });
   });
 }
@@ -66,7 +73,6 @@ export function addEditButtonListeners() {
     button.addEventListener("click", function () {
       const commentId = button.id.replace("edit-btn-", "");
       // Handle edit button logic here
-      console.log("you have clicked the edit button for comment: " + commentId);
       editComment(commentId);
     });
   });
