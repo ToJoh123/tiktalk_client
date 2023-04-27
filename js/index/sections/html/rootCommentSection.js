@@ -35,7 +35,7 @@ export function rootCommentSection(
         `
             : `        
             <button class="fa-regular fa-heart likeBtn" data-comment-id="${comment._id}" id="like-btn-${comment._id}">${numberOfLikes}</button>
-        <button class="fa-regular fa-comment toggleReplies" id="replyBtn-${comment._id}">${numberOfReplies}</button>
+           <button class="fa-regular fa-comment toggleReplies" id="replyBtn-${comment._id}">${numberOfReplies}</button>
          `
         }
       </div>
